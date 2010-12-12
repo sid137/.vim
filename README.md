@@ -36,7 +36,8 @@ Create a symlink to .vimrc file
 
 ### Key Mappings  (subject to change)
 
-Leader key mapped to 
+* Leader key mapped to 
+  
     `,`
 
 
