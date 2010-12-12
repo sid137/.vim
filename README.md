@@ -19,6 +19,28 @@ Create a symlink to .vimrc file
 
 
 Plugins loaded from .vim/bundle directory with Pathogen
+([vim.org](http://www.vim.org/scripts/script.php?script_id=2332))
+([github](http://github.com/tpope/vim-pathogen))
+
+
+*   Surround Plugin ([vim.org](http://www.vim.org/scripts/script.php?script_id=1697))
+    ([github](http://github.com/tpope/vim-surround))
+
+*   Snipmate 
+    ([vim.org](http://www.vim.org/scripts/script.php?script_id=2540))
+    ([github](http://github.com/msanders/snipmate.vim))
+
+*   Snipmate Extrra Snippets
+    ([github](git://github.com/scrooloose/snipmate-snippets.git))
+
+*   Rails
+    ([vim.org](http://www.vim.org/scripts/script.php?script_id=1567))
+    ([github](http://github.com/tpope/vim-rails))
+
+*   Command-T
+    ([vim.org](http://www.vim.org/scripts/script.php?script_id=3025)
+    [git](git://git.wincent.com/command-t.git))
+
 
 ### General Settings
 
@@ -99,22 +121,16 @@ map <C-l> <C-W>l
 * .vimrc automatically reloaded when edited from VIM
 
 
-" Enable extended % matching
-runtime macros/matchit.vim
-
 * Run script with F5 key when shebbang is present
 
 
-autocmd FileType ruby :call DoRubyMappings()
+### Ruby mappings
 
-function! DoRubyMappings()
+* Bind control-l to hashrocket =>
 
-    " bind control-l to hashrocket
-    imap <buffer> <C-l> <Space>=><Space>"
-
-    " convert word into ruby symbol
-    imap <buffer> <C-k> <C-o>b:<Esc>Ea
-    nmap <buffer> <C-k> lbi:<Esc>E"
+* convert word into ruby symbol
+    
+    `<C-k> <C-o>`
    
     inoremap <buffer> [[ ?def <CR>
     inoremap <buffer> ]] /def <CR>
@@ -134,21 +150,50 @@ function! DoRubyMappings()
     inoremap <buffer> \\ \
     inoremap <buffer> ;; ;
 
-" NERTree Plugin
-nmap ,n :NERDTreeClose<CR>:NERDTreeToggle<CR>
-nmap ,m :NERDTreeClose<CR>:NERDTreeFind<CR>
-nmap ,N :NERDTreeClose<CR>
+### Nerdtree Plugin 
 
-" load comments.vim for easy commenting
-" http://www.vim.org/scripts/script.php?script_id=1528
+* Toggle Nerdtree
 
-noremap <leader>t :CommandT<cr>
-noremap <leader>y :CommandTFlush<cr>
+    `,n`
+
+* Close Nerdtree
+
+    `,N`
+
+
+### CommandT Mappings
+
+
+* Call Command-T in Insert mode
+
+    `,t`
+
+* Flush/Reload Command-T 
+
+    
+    `,y`
+
+
+### Commenting and Uncommenting blocks for line visual mode (Shift-V)
+Load comments.vim for easy commenting
+ http://www.vim.org/scripts/script.php?script_id=1528
+
+* Comment selected block of text
+
+    `Ctrl-C`   
+        
+* Uncomment a selected block of text
+
+    `Ctrl-X`
+
 
 
 " Use AutoCMD to automaticall create nonexistant directories on save
 " http://www.ibm.com/developerworks/linux/library/l-vim-script-5/index.html
 
+
+### Snipmate
+Snipmate plugin installed with snippets from 
 
 
 """""""""""""""""""""""""""""""""""""""""""""
