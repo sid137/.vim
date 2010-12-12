@@ -194,13 +194,12 @@ Load comments.vim for easy commenting
 
 ### Snipmate
 
-"shortcuts to quickly create new snippet
-map <Leader>ca :call MakeSnippet()<CR>
-imap <Leader>ca <ESC> :call MakeSnippet()<CR>
 *   Create snippet from buffer Insert or Normal mode
 
-    `,ca  snippet_name`
+    ,ca  snippet_name
 
+*	Autoclose snippet buffer on save
 
-*   Snippets use filetype of original bufffer
+*   Snippets use filetype of original bufffer instead of default "snippet"
+	filetype, allowing you to use snippets to make snippets
 
