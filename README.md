@@ -196,7 +196,7 @@ Load comments.vim for easy commenting
 
 *   Create snippet from buffer Insert or Normal mode
 
-    ,ca  snippet_name
+    `,ca  snippet_name`
 
 *	Autoclose snippet buffer on save
 
