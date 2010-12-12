@@ -193,33 +193,14 @@ Load comments.vim for easy commenting
 
 
 ### Snipmate
-Snipmate plugin installed with snippets from 
-
-
-"""""""""""""""""""""""""""""""""""""""""""""
-""Snipmate Mod
-"""""""""""""""""""""""""""""""""""""""""""""
-" Reload snippets and close snippet buffer on snippet save
-autocmd BufWritePost *.snippet :call ReloadAllSnippets() | :Bclose
 
 "shortcuts to quickly create new snippet
 map <Leader>ca :call MakeSnippet()<CR>
 imap <Leader>ca <ESC> :call MakeSnippet()<CR>
+*   Create snippet from buffer Insert or Normal mode
 
-function! MakeSnippet()
-	if exists("g:snippet_file_type")
-		unlet g:snippet_file_type
-	endif
+    `,ca  snippet_name`
 
-	if empty(&ft)
-		echo "No filetype defined for snippet"
-	else
-		let name = input('Enter the snippet abbreviation: ')
-		let g:snippet_file_type = &ft
-		let snippet_path = g:snippets_dir . g:snippet_file_type . '/' . name . '.snippet'
-		exec "edit" snippet_path
-		let &filetype=g:snippet_file_type
-	endif
-endfunction
 
+*   Snippets use filetype of original bufffer
 
