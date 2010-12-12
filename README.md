@@ -131,6 +131,7 @@ map <C-l> <C-W>l
 * convert word into ruby symbol
     
     `<C-k> <C-o>`
+
    
     inoremap <buffer> [[ ?def <CR>
     inoremap <buffer> ]] /def <CR>
