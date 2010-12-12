@@ -42,66 +42,54 @@ Leader key mapped to
 
 * Fast saving in Insert and Normal mode
 
-  ,w
+    ,w
 
 
 * Easily edit the .vimrc from Insert mode
-  ,e
+
+    ,e
 
 
 * Return to Normal mode from Insert mode
-   jk 
 
-" Map jk to <ESC> in insert mode
-imap <Leader><Leader> <ESC>
-imap jk <ESC>
+    jk    or   ,,
 
-" Quickly edit/reload the vimrc file
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
+* Reload the .vimrc file from Normal mode
 
-"  turn ; into :
-nnoremap ; :
+    ,sv
 
-" Use Q for formatting the current paragraph (or selection)
-vmap Q gq
-nmap Q gqap
+* Turn ; in to : in Normal mode
 
-nnoremap j gj
-nnoremap k gk
 
-" Tired of clearing highlighted searches by searching for “ldsfhjkhgakjks”? Use this:
-" It clears the search buffer when you press ,/
-nmap <silent> ,/ :let @/=""<CR>
+* Clean highlighted searches from Normal mode
 
-" post sudo with !!
-cmap w!! w !sudo tee % >/dev/null
+    ,/
 
-inoremap <silent> <C-a> <ESC>u:set paste<CR> :set nopaste<CR>gi 	
 
-map <M-F10> :!ruby -r xmp -n -e 'xmp($_, "\%l\t\t\# \%r\n")'<CR>
+* Save file with sudo priviledges
 
+    w!!
+
+
+* Close current buffer
+
+    ,bd
+
+
+* Close all buffers
+
+    ,ba
+
+
+* Switch between buffers using left and right arrow keys
+
+    
 " Smart way to move btw. windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Close the current buffer
-map <leader>bd :Bclose<cr>
-
-" Close all the buffers
-map <leader>ba :1,300 bd!<cr>
-
-" Use the arrows to something usefull
-map <right> :bn<cr>
-map <left> :bp<cr>
-
-
-" When pressing <leader>cd switch to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>
-
-" Easier non-interactive command insertion
-" "nnoremap <Space> :
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocommands
