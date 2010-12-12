@@ -176,7 +176,10 @@ map <C-l> <C-W>l
 
 ### Commenting and Uncommenting blocks for line visual mode (Shift-V)
 Load comments.vim for easy commenting
- http://www.vim.org/scripts/script.php?script_id=1528
+
+http://www.vim.org/scripts/script.php?script_id=1528
+
+
 
 * Comment selected block of text
 
