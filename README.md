@@ -24,42 +24,72 @@ Plugins loaded from .vim/bundle directory with Pathogen
 
 
 *   Surround Plugin ([vim.org](http://www.vim.org/scripts/script.php?script_id=1697))
+
     ([github](http://github.com/tpope/vim-surround))
 
+
 *   Snipmate 
+
     ([vim.org](http://www.vim.org/scripts/script.php?script_id=2540))
+
     ([github](http://github.com/msanders/snipmate.vim))
 
-*   Snipmate Extrra Snippets
+
+*   Snipmate Extra Snippets
+
     ([github](https://github.com/scrooloose/snipmate-snippets.git))
 
+
 *   Rails
+
     ([vim.org](http://www.vim.org/scripts/script.php?script_id=1567))
+
     ([github](http://github.com/tpope/vim-rails))
 
+
 *   Command-T
+
     ([vim.org](http://www.vim.org/scripts/script.php?script_id=3025)
+
     [git](https://git.wincent.com/command-t.git))
 
+
 *   VIM-Session
+
     <http://peterodding.com/code/vim/session/>
+
     <https://github.com/xolox/vim-session.git>
 
+
 *   Supertab
+
     <http://www.vim.org/scripts/script.php?script_id=1643>
+
     <https://github.com/ervandew/supertab.git>
 
+
 *   Sparkup
+
     <https://github.com/rstacruz/sparkup>
+
     <https://github.com/rstacruz/sparkup.git>
 
+
 *   NerdTree
+
     <http://www.vim.org/scripts/script.php?script_id=1658>
+
     <https://github.com/scrooloose/nerdtree.git>
 
+
 *   HTML5.vim
+
     <http://www.vim.org/scripts/script.php?script_id=3236>
+
     <https://github.com/othree/html5.vim.git>
+
+
+
 ### General Settings
 
 * Text wrapped to 80 character lines
