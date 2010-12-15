@@ -48,37 +48,27 @@ Plugins loaded from .vim/bundle directory with Pathogen
 
 
 *   Command-T
-
     ([vim.org](http://www.vim.org/scripts/script.php?script_id=3025)
-
     [git](https://git.wincent.com/command-t.git))
 
 
 *   VIM-Session
-
     <http://peterodding.com/code/vim/session/>
-
     <https://github.com/xolox/vim-session.git>
 
 
 *   Supertab
-
     <http://www.vim.org/scripts/script.php?script_id=1643>
-
     <https://github.com/ervandew/supertab.git>
 
 
 *   Sparkup
-
     <https://github.com/rstacruz/sparkup>
-
     <https://github.com/rstacruz/sparkup.git>
 
 
 *   NerdTree
-
     <http://www.vim.org/scripts/script.php?script_id=1658>
-
     <https://github.com/scrooloose/nerdtree.git>
 
 
