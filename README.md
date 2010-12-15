@@ -41,6 +41,14 @@ Plugins loaded from .vim/bundle directory with Pathogen
     ([vim.org](http://www.vim.org/scripts/script.php?script_id=3025)
     [git](git://git.wincent.com/command-t.git))
 
+*   VIM-Session
+    <http://peterodding.com/code/vim/session/>
+    <git://github.com/xolox/vim-session.git>
+
+*   Supertab
+    <http://www.vim.org/scripts/script.php?script_id=1643>
+    <git://github.com/ervandew/supertab.git>
+
 
 ### General Settings
 
