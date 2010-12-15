@@ -57,7 +57,9 @@ Plugins loaded from .vim/bundle directory with Pathogen
     <http://www.vim.org/scripts/script.php?script_id=1658>
     <git://github.com/scrooloose/nerdtree.git>
 
-
+*   HTML5.vim
+    <http://www.vim.org/scripts/script.php?script_id=3236>
+    <git://github.com/othree/html5.vim.git>
 ### General Settings
 
 * Text wrapped to 80 character lines
