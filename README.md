@@ -31,7 +31,7 @@ Plugins loaded from .vim/bundle directory with Pathogen
     ([github](http://github.com/msanders/snipmate.vim))
 
 *   Snipmate Extrra Snippets
-    ([github](git://github.com/scrooloose/snipmate-snippets.git))
+    ([github](https://github.com/scrooloose/snipmate-snippets.git))
 
 *   Rails
     ([vim.org](http://www.vim.org/scripts/script.php?script_id=1567))
@@ -39,15 +39,15 @@ Plugins loaded from .vim/bundle directory with Pathogen
 
 *   Command-T
     ([vim.org](http://www.vim.org/scripts/script.php?script_id=3025)
-    [git](git://git.wincent.com/command-t.git))
+    [git](https://git.wincent.com/command-t.git))
 
 *   VIM-Session
     <http://peterodding.com/code/vim/session/>
-    <git://github.com/xolox/vim-session.git>
+    <https://github.com/xolox/vim-session.git>
 
 *   Supertab
     <http://www.vim.org/scripts/script.php?script_id=1643>
-    <git://github.com/ervandew/supertab.git>
+    <https://github.com/ervandew/supertab.git>
 
 *   Sparkup
     <https://github.com/rstacruz/sparkup>
@@ -55,11 +55,11 @@ Plugins loaded from .vim/bundle directory with Pathogen
 
 *   NerdTree
     <http://www.vim.org/scripts/script.php?script_id=1658>
-    <git://github.com/scrooloose/nerdtree.git>
+    <https://github.com/scrooloose/nerdtree.git>
 
 *   HTML5.vim
     <http://www.vim.org/scripts/script.php?script_id=3236>
-    <git://github.com/othree/html5.vim.git>
+    <https://github.com/othree/html5.vim.git>
 ### General Settings
 
 * Text wrapped to 80 character lines
