@@ -5,8 +5,7 @@
 
 download repository
 
-    cd ~/
-    git clone --recursive git://github.com/sid137/.vim.git
+    git clone --recursive git://github.com/sid137/.vim.git ~/.vim
 
 Create a symlink to .vimrc file
     
@@ -88,7 +87,7 @@ Plugins loaded from .vim/bundle directory with Pathogen
 
     <https://github.com/othree/html5.vim.git>
 
-
+## Customizations
 
 ### General Settings
 
