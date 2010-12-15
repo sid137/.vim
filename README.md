@@ -49,6 +49,14 @@ Plugins loaded from .vim/bundle directory with Pathogen
     <http://www.vim.org/scripts/script.php?script_id=1643>
     <git://github.com/ervandew/supertab.git>
 
+*   Sparkup
+    <https://github.com/rstacruz/sparkup>
+    <https://github.com/rstacruz/sparkup.git>
+
+*   NerdTree
+    <http://www.vim.org/scripts/script.php?script_id=1658>
+    <git://github.com/scrooloose/nerdtree.git>
+
 
 ### General Settings
 
