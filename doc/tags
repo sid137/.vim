@@ -110,6 +110,15 @@ g:loremipsum_words	loremipsum.txt	/*g:loremipsum_words*
 g:session_autoload	session.txt	/*g:session_autoload*
 g:session_autosave	session.txt	/*g:session_autosave*
 g:session_directory	session.txt	/*g:session_directory*
+hicolors	hicolors.txt	/*hicolors*
+hicolors-contents	hicolorshelp.txt	/*hicolors-contents*
+hicolors-copyright	hicolorshelp.txt	/*hicolors-copyright*
+hicolors-history	hicolorshelp.txt	/*hicolors-history*
+hicolors-start	hicolorshelp.txt	/*hicolors-start*
+hicolors-usage	hicolorshelp.txt	/*hicolors-usage*
+hicolors-use	hicolorshelp.txt	/*hicolors-use*
+hicolorshelp	hicolorshelp.txt	/*hicolorshelp*
+hicolorshelp.txt	hicolorshelp.txt	/*hicolorshelp.txt*
 loremipsum#Generate()	loremipsum.txt	/*loremipsum#Generate()*
 loremipsum#GenerateInline()	loremipsum.txt	/*loremipsum#GenerateInline()*
 loremipsum#Insert()	loremipsum.txt	/*loremipsum#Insert()*

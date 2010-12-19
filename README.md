@@ -11,8 +11,21 @@ Create a symlink to .vimrc file
     
     ln -s ~/.vim/vimrc ~/.vimrc
 
+VIM Needs to be compiled from source.   Download the source using Mercurial
+
+    hg clone https://vim.googlecode.com/hg/ vim
 
 
+
+and use the following configuration
+
+# http://204.152.191.100:8080/wiki/index.php/Configure_options_-_vim
+    ./configure --enable-rubyinterp --enable-pythoninterp --enable-python3interp
+    --enable-perlinterp --enable-cscope --enable-multibyte  --with-features=huge
+    --enable-fontset --enable-xim --with-x --prefix=$HOME/vim
+
+    make; make install
+    
 
 ## Features
 

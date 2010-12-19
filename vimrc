@@ -23,6 +23,12 @@ set autoindent
 set smartindent
 set hlsearch
 set incsearch
+set t_Co=256                " Make terminal more colorful
+
+
+"highlight clear SpellBad
+"highlight SpellBad term=reverse ctermbg=1 gui=undercurl guisp=Blue
+
 " set background=dark
 set title
 set cursorline
@@ -123,6 +129,12 @@ map <leader>cd :cd %:p:h<cr>
 " Easier non-interactive command insertion
 " "nnoremap <Space> :
 
+
+
+
+
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocommands
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -167,7 +179,7 @@ autocmd FileType ruby :call DoRubyMappings()
 function! DoRubyMappings()
 
     " bind control-l to hashrocket
-    imap <buffer> <C-l> <Space>=><Space>"
+    imap <buffer> ji <Space>=><Space>
 
     " convert word into ruby symbol
     imap <buffer> <C-k> <C-o>b:<Esc>Ea
