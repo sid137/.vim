@@ -100,6 +100,11 @@ Plugins loaded from .vim/bundle directory with Pathogen
 
     <https://github.com/othree/html5.vim.git>
 
+*   Ruby block Selection
+
+    <http://vimcasts.org/blog/2010/12/a-text-object-for-ruby-blocks>
+
+
 ## Customizations
 
 ### General Settings
