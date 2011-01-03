@@ -9,7 +9,7 @@ set bs=indent,eol,start     " Allow backspacing over everything in insert mode
 set history=1000             " Keep 1000 lines of command line history
 set undolevels=1000
 
-"Text basics
+""Text basics
 set textwidth=80            " Set text to wrap at 80 columns
 set expandtab               " Convert tabs to spaces
 set tabstop=4               " Tabs = 4 spaces 

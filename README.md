@@ -85,6 +85,9 @@ Plugins loaded from .vim/bundle directory with Pathogen
 
 *   Sparkup
 
+    Disabled because it screw up tab indentation with haml and html files  BADLY
+    not work the trouble
+
     <https://github.com/rstacruz/sparkup>
 
     <https://github.com/rstacruz/sparkup.git>
