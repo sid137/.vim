@@ -39,6 +39,9 @@ Plugins loaded from .vim/bundle directory with Pathogen
 
     ([github](http://github.com/tpope/vim-surround))
 
+* VIM Haml
+
+  https://github.com/tpope/vim-haml.git
 
 *   Snipmate 
 
