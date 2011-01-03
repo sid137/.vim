@@ -72,3 +72,7 @@ decoherence
 datatype
 DIO
 setpoint
+xmodmap/!
+optgroup/!
+text/!
+blueprint/!
