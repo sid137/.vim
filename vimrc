@@ -193,15 +193,15 @@ function! DoRubyMappings()
 
     inoremap <buffer> ; :
     inoremap <buffer> ;; ;
-    inoremap <buffer> 2 "
-    inoremap <buffer> 22 2
-    imap <buffer> 9 (
-    inoremap <buffer> 99 9
-    imap <buffer> 0 )
-    inoremap <buffer> 00 0
-    inoremap <buffer> \ |
-    inoremap <buffer> \\ \
-    inoremap <buffer> ;; ;
+    "inoremap <buffer> 2 "
+    "inoremap <buffer> 22 2
+    "imap <buffer> 9 (
+    "inoremap <buffer> 99 9
+    "imap <buffer> 0 )
+    "inoremap <buffer> 00 0
+    "inoremap <buffer> \ |
+    "inoremap <buffer> \\ \
+    "inoremap <buffer> ;; ;
     "@
     "#
     "()

@@ -76,3 +76,7 @@ xmodmap/!
 optgroup/!
 text/!
 blueprint/!
+match/!
+$header/!
+url/!
+describe/!
