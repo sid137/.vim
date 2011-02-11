@@ -24,7 +24,10 @@ set smartindent
 set hlsearch
 set incsearch
 set t_Co=256                " Make terminal more colorful
-
+set backupdir=~/.tmp
+set directory=~/.tmp " Don't clutter my dirs up with swp and tmp files"
+set gdefault " assume the /g flag on :s substitutions to replace all matches in a line
+set laststatus=2  " Always show status line.
 
 "highlight clear SpellBad
 "highlight SpellBad term=reverse ctermbg=1 gui=undercurl guisp=Blue
@@ -168,6 +171,18 @@ augroup filetypedetect
     au BufRead,BufNewFile Rakefile  setfiletype ruby
 augroup END
 
+" ================
+" Ruby stuff
+" ================
+" "https://github.com/r00k/dotfiles/blob/master/vimrc
+augroup myfiletypes
+  " Clear old autocmds in group
+  autocmd!
+  " autoindent with two spaces, always expand tabs
+  autocmd FileType ruby,eruby,yaml,haml set ai sw=2 sts=2 et
+augroup END
+" ================
+
 
 " Use pathogen to easily modify the runtime path to include all
 " plugins under the ~/.vim/bundle directory
@@ -193,27 +208,37 @@ function! DoRubyMappings()
 
     inoremap <buffer> ; :
     inoremap <buffer> ;; ;
-    "inoremap <buffer> 2 "
-    "inoremap <buffer> 22 2
-    "imap <buffer> 9 (
-    "inoremap <buffer> 99 9
-    "imap <buffer> 0 )
-    "inoremap <buffer> 00 0
-    "inoremap <buffer> \ |
-    "inoremap <buffer> \\ \
-    "inoremap <buffer> ;; ;
-    "@
-    "#
-    "()
-    "{}
-    "<>
-    """
-    "!
-    "=>
-    "|
-    "?
-    "_
-    ":
+
+    " Ruby mapppings from Ben Orenstein
+    " vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+""    map <Leader>cc :!cucumber %<CR>
+""    map <Leader>co :TComment<CR>
+""    map <Leader>d odebugger<cr>puts 'debugger'<esc>:w<cr>
+""    map <Leader>gac :Gcommit -m -a ""<LEFT>
+""    map <Leader>gc :Gcommit -m ""<LEFT>
+""    map <Leader>gs :Gstatus<CR>
+""    map <Leader>fa :sp test/factories.rb<CR>
+""    map <Leader>f :sp spec/factories.rb<CR>
+""    map <Leader>sc :sp db/schema.rb<cr>
+""    map <Leader>fix :cnoremap % %<CR>
+""    map <Leader>i mmgg=G`m<CR>
+""    map <Leader>l :!ruby <C-r>% \| less<CR>
+""    map <Leader>t :!ruby -I"test" -I"spec" %<CR>
+""    map <Leader>rd :!bundle exec rspec % --format documentation<CR>
+""    map <Leader>n ,w,t
+""    map <Leader>o ?def <CR>:nohl<CR>w"zy$:!ruby -I"test" <C-r>% -n <C-r>z<CR>
+""    map <Leader>p :set paste<CR>i
+""    map <Leader>rw :%s/\s\+$//
+""    map <Leader>m :Rmodel
+""    map <Leader>sm :RSmodel
+""    map <Leader>su :RSunittest
+""    map <Leader>sv :RSview
+""    map <Leader>u :Runittest
+""    map <Leader>vc :RVcontroller
+""    map <Leader>vf :RVfunctional
+""    map <Leader>vu :RVunittest<CR>
+""    map <Leader>vm :RVmodel
+""    map <Leader>vv :RVview "
 
 endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
