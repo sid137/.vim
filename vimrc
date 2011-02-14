@@ -493,4 +493,3 @@ function! MakeSnippet()
 endfunction
 
 
-set pastetoggle=<F2>
