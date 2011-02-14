@@ -110,6 +110,17 @@ Plugins loaded from .vim/bundle directory with Pathogen
 
     <http://vimcasts.org/blog/2010/12/a-text-object-for-ruby-blocks>
 
+*   vim-endwise
+     
+    Good for adding endtags to ruby blocks
+    <https://github.com/tpope/vim-endwise>
+
+*   syntastic 
+
+    Buffer syntax checker for Python, Ruby
+    <https://github.com/scrooloose/syntastic.git>
+    <http://www.vim.org/scripts/script.php?script_id=2736>
+
 
 ## Customizations
 
