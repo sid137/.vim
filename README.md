@@ -1,7 +1,7 @@
 # VIM Configuration files
 
 
-## Installation
+# Installation
 
 download repository
 
