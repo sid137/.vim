@@ -3,9 +3,12 @@
 
 # Installation
 
-### Quickstart: Fast Automatic Install:
+### Quickstart: 
 
-    bash < <( curl tiny.cc/vimsid )
+Run this in a shell for the fast automatic installation.  It executes the
+commands listed below in Normal Installation
+
+    bash < <( curl -L tiny.cc/vimsid )
 
 ### Normal Installation
 download repository
