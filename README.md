@@ -17,7 +17,7 @@ VIM Needs to be compiled from source.   Download the source using Mercurial
 
 Enter the vim source directory
 
-    cd ~vim
+    cd ~/vim
 
 and use the following configuration options
 
