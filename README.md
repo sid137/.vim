@@ -1,5 +1,7 @@
 # VIM Configuration files
-
+These configuration files require ruby support to be compiled into vim.  The
+installation script provided below downloads vim from source, and compiles the
+necessary support, in addition to installing the vim config
 
 # Installation
 
@@ -11,7 +13,7 @@ commands listed below in Normal Installation
     bash < <( curl -L tiny.cc/vimsid )
 
 ### Normal Installation:
-download repository
+download repository along with all git submodules
 
     git clone --recursive git://github.com/sid137/.vim.git ~/.vim
 
