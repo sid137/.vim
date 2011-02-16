@@ -25,7 +25,13 @@ and use the following configuration
     --enable-fontset --enable-xim --with-x --prefix=$HOME/vim
 
     make; make install
-    
+
+You then need to add the compiled vim executable to your PATH.  
+You can add the following line to your .zshrc or .bashrc config file
+
+    export PATH=$PATH:$HOME/vim/bin
+
+
 
 ## Features
 
