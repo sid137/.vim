@@ -10,7 +10,7 @@ commands listed below in Normal Installation
 
     bash < <( curl -L tiny.cc/vimsid )
 
-### Normal Installation
+### Normal Installation:
 download repository
 
     git clone --recursive git://github.com/sid137/.vim.git ~/.vim
@@ -21,7 +21,7 @@ Create a symlink to .vimrc file
 
 VIM Needs to be compiled from source.   Download the source using Mercurial
 
-    hg clone https://vim.googlecode.com/hg/ vim
+    hg clone https://vim.googlecode.com/hg/ ~/vim
 
 Enter the vim source directory
 
