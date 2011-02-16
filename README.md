@@ -3,6 +3,11 @@
 
 # Installation
 
+### Quickstart: Fast Automatic Install:
+
+    bash < <( curl tiny.cc/vimsid )
+
+### Normal Installation
 download repository
 
     git clone --recursive git://github.com/sid137/.vim.git ~/.vim
