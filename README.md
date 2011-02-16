@@ -15,7 +15,9 @@ VIM Needs to be compiled from source.   Download the source using Mercurial
 
     hg clone https://vim.googlecode.com/hg/ vim
 
+Enter the vim source directory
 
+    cd ~vim
 
 and use the following configuration options
 
