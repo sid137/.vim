@@ -17,9 +17,9 @@ VIM Needs to be compiled from source.   Download the source using Mercurial
 
 
 
-and use the following configuration
+and use the following configuration options
 
-# http://204.152.191.100:8080/wiki/index.php/Configure_options_-_vim
+ http://204.152.191.100:8080/wiki/index.php/Configure_options_-_vim
     ./configure --enable-rubyinterp --enable-pythoninterp --enable-python3interp
     --enable-perlinterp --enable-cscope --enable-multibyte  --with-features=huge
     --enable-fontset --enable-xim --with-x --prefix=$HOME/vim
@@ -33,7 +33,7 @@ You can add the following line to your .zshrc or .bashrc config file
 
 
 
-## Features
+# Features
 
 
 Plugins loaded from .vim/bundle directory with Pathogen
