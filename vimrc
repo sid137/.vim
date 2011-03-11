@@ -179,10 +179,10 @@ augroup myfiletypes
   " Clear old autocmds in group
   autocmd!
   " autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,eruby,yaml,haml set ai sw=2 sts=2 et
+  autocmd FileType ruby,eruby,yaml,haml,js set ai sw=2 sts=2 et
 augroup END
 " ================
-
+au BufRead,BufNewFile *.thor set filetype=ruby
 
 " Use pathogen to easily modify the runtime path to include all
 " plugins under the ~/.vim/bundle directory
@@ -210,35 +210,38 @@ function! DoRubyMappings()
     inoremap <buffer> ;; ;
 
     " Ruby mapppings from Ben Orenstein
-    " vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+     vmap <Leader>b :<C-U>!git blame <C-R>=expand(%:p) <CR> \| sed -n <C-R>=line('<) <CR>,<C-R>=line('>) <CR>p <CR>
 ""    map <Leader>cc :!cucumber %<CR>
 ""    map <Leader>co :TComment<CR>
 ""    map <Leader>d odebugger<cr>puts 'debugger'<esc>:w<cr>
-""    map <Leader>gac :Gcommit -m -a ""<LEFT>
-""    map <Leader>gc :Gcommit -m ""<LEFT>
-""    map <Leader>gs :Gstatus<CR>
+    map <Leader>gac :Gcommit -m -a <LEFT>
+    map <Leader>gc :Gcommit -m <LEFT>
+    map <Leader>gs :Gstatus<CR>
 ""    map <Leader>fa :sp test/factories.rb<CR>
-""    map <Leader>f :sp spec/factories.rb<CR>
-""    map <Leader>sc :sp db/schema.rb<cr>
+    map <Leader>f :sp spec/factories.rb<CR>
+    map <Leader>sc :sp db/schema.rb<cr>
 ""    map <Leader>fix :cnoremap % %<CR>
 ""    map <Leader>i mmgg=G`m<CR>
-""    map <Leader>l :!ruby <C-r>% \| less<CR>
-""    map <Leader>t :!ruby -I"test" -I"spec" %<CR>
-""    map <Leader>rd :!bundle exec rspec % --format documentation<CR>
-""    map <Leader>n ,w,t
-""    map <Leader>o ?def <CR>:nohl<CR>w"zy$:!ruby -I"test" <C-r>% -n <C-r>z<CR>
-""    map <Leader>p :set paste<CR>i
-""    map <Leader>rw :%s/\s\+$//
-""    map <Leader>m :Rmodel
-""    map <Leader>sm :RSmodel
-""    map <Leader>su :RSunittest
-""    map <Leader>sv :RSview
-""    map <Leader>u :Runittest
-""    map <Leader>vc :RVcontroller
-""    map <Leader>vf :RVfunctional
-""    map <Leader>vu :RVunittest<CR>
-""    map <Leader>vm :RVmodel
-""    map <Leader>vv :RVview "
+    map <Leader>l :!ruby <C-r>% \| less<CR>
+    "map <Leader>s :!ruby -Itest -Ispec %<CR>
+    map <Leader>s :!clear; rspec spec<CR>
+    imap <Leader>s <ESC>:!clear; rspec spec<CR>
+    map <Leader>rd :!bundle exec rspec % --format documentation<CR>
+    imap <Leader>a ,w,s
+    map <Leader>a ,w,s
+    map <Leader>o ?def <CR>:nohl<CR>wzy$:!ruby -Itest <C-r>% -n <C-r>z<CR>
+    map <Leader>p :set paste<CR>i
+    map <Leader>rw :%s/\s\+$//
+    map <Leader>m :Rmodel
+    map <Leader>sm :RSmodel
+    map <Leader>su :RSunittest
+    map <Leader>sv :RSview
+    map <Leader>u :Runittest
+    map <Leader>vc :RVcontroller
+    map <Leader>vf :RVfunctional
+    map <Leader>vu :RVunittest<CR>
+    map <Leader>vm :RVmodel
+    map <Leader>vv :RVview 
 
 endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -246,9 +249,9 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " NERTree Plugin
-nmap ,n :NERDTreeClose<CR>:NERDTreeToggle<CR>
-nmap ,m :NERDTreeClose<CR>:NERDTreeFind<CR>
-nmap ,N :NERDTreeClose<CR>
+""nmap ,n :NERDTreeClose<CR>:NERDTreeToggle<CR>
+""nmap ,m :NERDTreeClose<CR>:NERDTreeFind<CR>
+""nmap ,N :NERDTreeClose<CR>
 
 " Store the bookmarks file
 let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")

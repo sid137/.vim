@@ -1,11 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/home/sid137/core/autostart'
-let g:netrw_dirhist_2='/home/sid137/.vim'
-let g:netrw_dirhist_3='/home/sid137/tracking/chef-repo/.git'
-let g:netrw_dirhist_4='/home/sid137/projects/journal/app/views/posts'
-let g:netrw_dirhist_5='/home/sid137/.emacs.d'
-let g:netrw_dirhist_6='/home/sid137/tmp'
-let g:netrw_dirhist_7='/home/sid137/core/.vim/bundle/snipmate.vim/snippets/ruby'
-let g:netrw_dirhist_8='/'
-let g:netrw_dirhist_9='/home/sid137/lists'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/home/sid137/.rvm/gems/ruby-1.9.2-p0/gems/httparty-0.7.4'
+let g:netrw_dirhist_2='/home/sid137/spikes/socgenactif/plugin/param'
