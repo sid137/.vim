@@ -153,7 +153,7 @@ runtime macros/matchit.vim
 " execute script with F5 is shebbang is prersent
 function! RunShebang()
   if (match(getline(1), '^\#!') == 0)
-    :!./%
+    :!clear; ./%
   else
     echo "No shebang in this file."
   endif
