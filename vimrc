@@ -176,10 +176,28 @@ augroup filetypedetect
 augroup END
 
 
+" ===============================
+" One Liner Configurations
+" ===============================
 
-"  Coffeescript confirguration"
+" Gist 
+" http://www.vim.org/scripts/script.php?script_id=2423
+let g:gist_detect_filetype = 1  " Let gist detect filetype from filename
+let g:gist_open_browser_after_post = 1   " Open browser after post
+let g:gist_browser_command = 'firefox %URL%' "Browser command..  just in case
+let g:gist_clip_command = 'xclip -selection clipboard'  " Use option -c to have gist gopy the gist code
+
+"  Coffeescript configuration"
+"  https://github.com/kchmck/vim-coffee-script "
+
 let coffee_compile_on_save = 1
 
+" not working with filetype detection
+""autocmd FileType coffee :call DoCoffeeScriptMappings()
+""autocmd FileType coffee vmap <buffer> oc :CoffeeCompile<CR>  
+""function! DoCoffeeScriptMappings()
+    ""vmap <buffer> oc :CoffeeCompile<CR>  
+""endfunction
 
 " ================
 " Ruby stuff
