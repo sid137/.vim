@@ -191,7 +191,7 @@ let g:gist_clip_command = 'xclip -selection clipboard'  " Use option -c to have 
 "  https://github.com/kchmck/vim-coffee-script "
 
 let coffee_compile_on_save = 1
-autocmd BufWritePost,FileWritePost *.coffee silent !docco <afile> &
+autocmd BufWritePost,FileWritePost *.coffee silent !docco <afile> > /dev/null &
 
 " not working with filetype detection
 ""autocmd FileType coffee :call DoCoffeeScriptMappings()
@@ -212,7 +212,6 @@ augroup myfiletypes
 augroup END
 " ================
 au BufRead,BufNewFile *.thor set filetype=ruby
-
 
 autocmd FileType ruby :call DoRubyMappings()
 
