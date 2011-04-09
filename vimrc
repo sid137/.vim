@@ -191,6 +191,7 @@ let g:gist_clip_command = 'xclip -selection clipboard'  " Use option -c to have 
 "  https://github.com/kchmck/vim-coffee-script "
 
 let coffee_compile_on_save = 1
+autocmd BufWritePost,FileWritePost *.coffee silent !docco <afile> &
 
 " not working with filetype detection
 ""autocmd FileType coffee :call DoCoffeeScriptMappings()
@@ -207,7 +208,7 @@ augroup myfiletypes
   " Clear old autocmds in group
   autocmd!
   " autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,eruby,yaml,haml,js set ai sw=2 sts=2 et
+  autocmd FileType ruby,eruby,yaml,haml,js,coffee set ai sw=2 sts=2 et
 augroup END
 " ================
 au BufRead,BufNewFile *.thor set filetype=ruby
