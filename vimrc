@@ -55,12 +55,16 @@ set pastetoggle=<F2>
 colorscheme delek
 syntax on
 
+" Use pathogen to easily modify the runtime path to include all
+" plugins under the ~/.vim/bundle directory
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
 
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugin
 
-
+filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key Maps
@@ -184,10 +188,6 @@ augroup END
 " ================
 au BufRead,BufNewFile *.thor set filetype=ruby
 
-" Use pathogen to easily modify the runtime path to include all
-" plugins under the ~/.vim/bundle directory
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
 
 autocmd FileType ruby :call DoRubyMappings()
 
