@@ -60,11 +60,11 @@ syntax on
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
+filetype off          " Force reloading on Debian
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugin
 
-filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key Maps
