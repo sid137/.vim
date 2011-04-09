@@ -175,6 +175,12 @@ augroup filetypedetect
     au BufRead,BufNewFile Rakefile  setfiletype ruby
 augroup END
 
+
+
+"  Coffeescript confirguration"
+let coffee_compile_on_save = 1
+
+
 " ================
 " Ruby stuff
 " ================
