@@ -213,8 +213,32 @@ augroup END
 " ================
 au BufRead,BufNewFile *.thor set filetype=ruby
 
-autocmd FileType ruby :call DoRubyMappings()
+autocmd User Rails :call DoConfigureRails()
+function! DoConfigureRails()
+    map <Leader>m :Rmodel<CR>
+    imap <Leader>m <ESC>:Rmodel<CR>
+    map <Leader>c :Rcontroller<CR>
+    imap <Leader>c <ESC>:Rcontroller<CR>
+    map <Leader>rv :Rview<CR>
+    imap <Leader>rv <ESC>:Rview<CR>
+    
+    map <Leader>f :e spec/factories.rb<CR>
+    imap <Leader>f <ESC>:e spec/factories.rb<CR>
+    map <Leader>sc :e db/schema.rb<cr>
+    " "let Rails compile the coffescript, starting from 3.1
+    let coffee_compile_on_save = 0
+    map <Leader>sm :RSmodel
+    map <Leader>su :RSunittest
+    map <Leader>sv :RSview
+    map <Leader>u :Runittest
+    map <Leader>vc :RVcontroller
+    map <Leader>vf :RVfunctional
+    map <Leader>vu :RVunittest<CR>
+    map <Leader>vm :RVmodel
+    map <Leader>vv :RVview 
+endfunction
 
+autocmd FileType ruby :call DoRubyMappings()
 function! DoRubyMappings()
 
     " bind control-l to hashrocket
@@ -242,8 +266,6 @@ function! DoRubyMappings()
     map <Leader>gc :Gcommit -m <LEFT>
     map <Leader>gs :Gstatus<CR>
 ""    map <Leader>fa :sp test/factories.rb<CR>
-    map <Leader>f :sp spec/factories.rb<CR>
-    map <Leader>sc :sp db/schema.rb<cr>
 ""    map <Leader>fix :cnoremap % %<CR>
 ""    map <Leader>i mmgg=G`m<CR>
     map <Leader>l :!ruby <C-r>% \| less<CR>
@@ -256,16 +278,6 @@ function! DoRubyMappings()
     map <Leader>o ?def <CR>:nohl<CR>wzy$:!ruby -Itest <C-r>% -n <C-r>z<CR>
     map <Leader>p :set paste<CR>i
     map <Leader>rw :%s/\s\+$//
-    map <Leader>m :Rmodel
-    map <Leader>sm :RSmodel
-    map <Leader>su :RSunittest
-    map <Leader>sv :RSview
-    map <Leader>u :Runittest
-    map <Leader>vc :RVcontroller
-    map <Leader>vf :RVfunctional
-    map <Leader>vu :RVunittest<CR>
-    map <Leader>vm :RVmodel
-    map <Leader>vv :RVview 
 
 endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
