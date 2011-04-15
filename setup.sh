@@ -16,6 +16,7 @@ cd vim
 make; make install
 
 cat <<-END
+$(tput bold) $(tput setaf 2)
 Add the following line to your .zshrc or .bashrc config file
 
     export PATH=\$PATH:\$HOME/vim/bin
