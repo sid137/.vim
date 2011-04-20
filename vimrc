@@ -137,7 +137,8 @@ map <leader>cd :cd %:p:h<cr>
 " "nnoremap <Space> :
 
 
-
+" Increase Max file limit for Command-T"
+let g:CommandTMaxFiles=30000
 
 
 
