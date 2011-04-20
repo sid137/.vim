@@ -236,6 +236,9 @@ function! DoConfigureRails()
     map <Leader>vu :RVunittest<CR>
     map <Leader>vm :RVmodel
     map <Leader>vv :RVview 
+
+   " Rails specific autocommands"
+    autocmd BufWritePost,FileWritePost *.sass silent !compass compile -q <afile> > /dev/null &
 endfunction
 
 autocmd FileType ruby :call DoRubyMappings()
