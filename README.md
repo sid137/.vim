@@ -45,6 +45,9 @@ You can add the following line to your .zshrc or .bashrc config file
 
 # Features
 
+# Look for more vim things here
+#https://github.com/vim-scripts
+
 
 Plugins loaded from .vim/bundle directory with Pathogen
 ([vim.org](http://www.vim.org/scripts/script.php?script_id=2332))
