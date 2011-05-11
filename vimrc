@@ -146,6 +146,11 @@ let g:CommandTMaxFiles=30000
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocommands
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" use ghc functionality for haskell files
+au Bufenter *.hs compiler ghc
+let g:haddock_browser = "firefox"
+
+
 
 " " When vimrc is edited, reload it
 autocmd! BufWritePost .vimrc source $MYVIMRC 
@@ -194,6 +199,8 @@ let g:gist_clip_command = 'xclip -selection clipboard'  " Use option -c to have 
 let coffee_compile_on_save = 1
 autocmd BufWritePost,FileWritePost *.coffee silent !docco <afile> > /dev/null &
 
+map <Leader>d :!rocco % >  /dev/null &<CR>
+imap <Leader>d <ESC>:!rocco % > /dev/null &<CR>
 " not working with filetype detection
 ""autocmd FileType coffee :call DoCoffeeScriptMappings()
 ""autocmd FileType coffee vmap <buffer> oc :CoffeeCompile<CR>  
@@ -239,7 +246,17 @@ function! DoConfigureRails()
     map <Leader>vv :RVview 
 
    " Rails specific autocommands"
-    autocmd BufWritePost,FileWritePost *.sass silent !compass compile -q <afile> > /dev/null &
+   " Race condition? I have  6 zillion proceses running when I do this
+    ""autocmd BufWritePost,FileWritePost *.sass silent !compass compile -q <afile> > /dev/null &
+
+endfunction
+
+"shortcuts to quickly create new snippet
+vmap <Leader>rp :call ExtractPartial()
+
+function! ExtractPartial()
+    let partial_name = input('Enter the partial name: ')
+    exec "Rextract" partial_name
 endfunction
 
 autocmd FileType ruby :call DoRubyMappings()
