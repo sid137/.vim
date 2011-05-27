@@ -96,8 +96,11 @@ imap jw  <END>
 nnoremap ; :
 
 " Use Q for formatting the current paragraph (or selection)
-vmap Q gq
-nmap Q gqap
+""vmap Q gq
+""nmap Q gqap
+
+" User C to reexecute the lasts executed macro"
+map Q @@
 
 nnoremap j gj
 nnoremap k gk
@@ -197,7 +200,7 @@ let g:gist_clip_command = 'xclip -selection clipboard'  " Use option -c to have 
 "  https://github.com/kchmck/vim-coffee-script "
 
 let coffee_compile_on_save = 1
-autocmd BufWritePost,FileWritePost *.coffee silent !docco <afile> > /dev/null &
+"autocmd BufWritePost,FileWritePost *.coffee silent !docco <afile> > /dev/null &
 
 map <Leader>d :!rocco % >  /dev/null &<CR>
 imap <Leader>d <ESC>:!rocco % > /dev/null &<CR>
