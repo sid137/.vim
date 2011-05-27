@@ -22,3 +22,10 @@ Add the following line to your .zshrc or .bashrc config file
     export PATH=\$PATH:\$HOME/vim/bin
 END
 
+#  need to compile and install the command-t C module
+
+cd ~/.vim/ruby/command-t
+make clean
+ruby extconf.rb
+make && make install
+cd
