@@ -47,7 +47,8 @@ set ls=2                    " Always show status bar
 set mouse=a
 
 "Enable spellcheck"
-set spell
+" Very anti-useful in programming modes
+""set spell
 
 " togle paste mode
 set pastetoggle=<F2>
@@ -181,6 +182,7 @@ autocmd FileType python inoremap # X#
 augroup filetypedetect
     au BufRead,BufNewFile *.ru setfiletype ruby
     au BufRead,BufNewFile Gemfile setfiletype ruby
+    au BufRead,BufNewFile Guardfile setfiletype ruby
     au BufRead,BufNewFile Rakefile  setfiletype ruby
 augroup END
 
