@@ -12,9 +12,9 @@ set undolevels=1000
 ""Text basics
 set textwidth=80            " Set text to wrap at 80 columns
 set expandtab               " Convert tabs to spaces
-set tabstop=4               " Tabs = 4 spaces 
-set shiftwidth=4            " Indent/outdent 4 spaces
-set softtabstop=4           " Tab key indents 
+set tabstop=2               " Tabs = 2 spaces 
+set shiftwidth=2            " Indent/outdent 2 spaces
+set softtabstop=2           " Tab key indents 
 set shiftround              " Indent/outdent to nearest tabstop
 set smarttab                " Uses shiftwidth @ start of lines
 set fo=trcn
@@ -182,6 +182,7 @@ autocmd FileType python inoremap # X#
 augroup filetypedetect
     au BufRead,BufNewFile *.ru setfiletype ruby
     au BufRead,BufNewFile Gemfile setfiletype ruby
+    au BufRead,BufNewFile Termfile setfiletype ruby
     au BufRead,BufNewFile Guardfile setfiletype ruby
     au BufRead,BufNewFile Rakefile  setfiletype ruby
 augroup END
