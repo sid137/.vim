@@ -300,6 +300,7 @@ autocmd FileType python inoremap # X#
 augroup filetypedetect
     au BufRead,BufNewFile *.ru setfiletype ruby
     au BufRead,BufNewFile Gemfile setfiletype ruby
+    au BufRead,BufNewFile Vagrantfile setfiletype ruby
     au BufRead,BufNewFile Termfile setfiletype ruby
     au BufRead,BufNewFile Guardfile setfiletype ruby
     au BufRead,BufNewFile Rakefile  setfiletype ruby
