@@ -22,6 +22,7 @@ call vundle#rc()
 " List of vim plugins to install
 Bundle 'gmarik/vundle'
 Bundle "git://github.com/mileszs/ack.vim.git"
+Bundle "git://github.com/sjbach/lusty.git"
 Bundle "git://github.com/tpope/vim-rvm.git"
 Bundle "git://github.com/tpope/vim-endwise.git"
 Bundle "git://github.com/tpope/vim-fugitive"
@@ -39,7 +40,7 @@ Bundle "git://github.com/godlygeek/tabular.git"
 Bundle "git://github.com/vim-scripts/Gist.vim.git"
 Bundle "git://github.com/vim-scripts/L9.git"
 Bundle "git://github.com/Bogdanp/rbrepl.vim.git"
-Bundle "git://github.com/Townk/vim-autoclose.git"
+" Bundle "git://github.com/Townk/vim-autoclose.git"
 Bundle 'git://github.com/altercation/vim-colors-solarized.git'
 Bundle "git://github.com/rson/vim-conque.git"
 Bundle "git://github.com/clones/vim-fuzzyfinder.git"
@@ -50,12 +51,13 @@ Bundle "git://github.com/nelstrom/vim-textobj-rubyblock.git"
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle "git://github.com/gmarik/snipmate.vim.git"
 Bundle "git://github.com/krisleech/snipmate-snippets.git"
+Bundle "git://github.com/kchmck/vim-coffee-script.git"
 Bundle "https://github.com/ervandew/supertab"
 Bundle "jQuery"
 
 filetype plugin indent on     " and turn it back on!
 
-runtime macros/matchit.vim    
+" runtime macros/matchit.vim    
 " End of Vundler config
 
 
@@ -100,7 +102,7 @@ set autoindent
 set smartindent
 
 set fo=trcn
-set hidden
+set hidden                  " Allow hiding of buffers instead of closing them"
 set t_Co=256                " Make terminal more colorful
 set backupdir=~/.tmp
 set directory=~/.tmp " Don't clutter my dirs up with swp and tmp files"
@@ -234,7 +236,11 @@ map <leader>ba :1,300 bd!<cr>
 " Use the arrows to switch buffers
 map <right> :bn<cr>
 map <left> :bp<cr>
+map <up> :LustyJuggler<cr>
+map <down> :LustyJuggler<cr>
 
+" Close all the buffers
+map <leader>r :LustyBufferExplorer<cr>
 
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>
@@ -262,6 +268,16 @@ let Tlist_WinWidth = 60
 " Increase Max file limit for Command-T"
 let g:CommandTMaxFiles=30000
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
 
 
@@ -321,22 +337,24 @@ let g:gist_clip_command = 'xclip -selection clipboard'  " Use option -c to have 
 "  Coffeescript configuration"
 "  https://github.com/kchmck/vim-coffee-script "
 
+au BufWritePost *.coffee silent CoffeeMake!
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+let coffee_compile_vert = 1
+
 " AutoClose
-let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}'} 
-let g:AutoCloseProtectedRegions = ["Character"] 
+" let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}'} 
+" let g:AutoCloseProtectedRegions = ["Character"] 
 
 
-let coffee_compile_on_save = 1
 "autocmd BufWritePost,FileWritePost *.coffee silent !docco <afile> > /dev/null &
 
 map <Leader>d :!rocco % >  /dev/null &<CR>
 imap <Leader>d <ESC>:!rocco % > /dev/null &<CR>
 " not working with filetype detection
-""autocmd FileType coffee :call DoCoffeeScriptMappings()
-""autocmd FileType coffee vmap <buffer> oc :CoffeeCompile<CR>  
-""function! DoCoffeeScriptMappings()
-    ""vmap <buffer> oc :CoffeeCompile<CR>  
-""endfunction
+autocmd FileType coffee :call DoCoffeeScriptMappings()
+function! DoCoffeeScriptMappings()
+    map <Leader>cw :CoffeeCompile<CR>
+endfunction
 
 " ================
 " Ruby stuff
