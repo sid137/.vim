@@ -38,12 +38,13 @@ Bundle "git://github.com/panozzaj/vim-autocorrect.git"
 Bundle "git://github.com/sjl/gundo.vim.git"
 Bundle "git://github.com/godlygeek/tabular.git"
 Bundle "git://github.com/vim-scripts/Gist.vim.git"
-Bundle "git://github.com/vim-scripts/L9.git"
-Bundle "git://github.com/Bogdanp/rbrepl.vim.git"
+" Do I really need this?   Don't know what it does
+" Bundle "git://github.com/vim-scripts/L9.git"
+" Bundle "git://github.com/clones/vim-fuzzyfinder.git"
 " Bundle "git://github.com/Townk/vim-autoclose.git"
+Bundle "git://github.com/Bogdanp/rbrepl.vim.git"
 Bundle 'git://github.com/altercation/vim-colors-solarized.git'
 Bundle "git://github.com/rson/vim-conque.git"
-Bundle "git://github.com/clones/vim-fuzzyfinder.git"
 Bundle "git://github.com/xolox/vim-session.git" 
 Bundle "git://github.com/tsaleh/vim-tcomment.git"
 Bundle "git://github.com/kana/vim-textobj-user.git"
@@ -52,6 +53,8 @@ Bundle 'git://git.wincent.com/command-t.git'
 Bundle "git://github.com/gmarik/snipmate.vim.git"
 Bundle "git://github.com/krisleech/snipmate-snippets.git"
 Bundle "git://github.com/kchmck/vim-coffee-script.git"
+Bundle "git://github.com/Lokaltog/vim-easymotion.git"
+Bundle "git://github.com/Lokaltog/vim-powerline.git"
 Bundle "https://github.com/ervandew/supertab"
 Bundle "jQuery"
 
@@ -61,7 +64,7 @@ filetype plugin indent on     " and turn it back on!
 " End of Vundler config
 
 
-
+      
 
 
 " Many settings taken from 
@@ -172,9 +175,6 @@ nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>
 
 
-" <C-R>=line("
-" "
-
 let g:snippets_dir="~/.vim/snippets/"
 
 let mapleader = ","
@@ -188,9 +188,27 @@ nmap <leader>w :w!<cr>
 map <leader>e :e! ~/.vimrc<cr>
 
 " Map jk to <ESC> in insert mode
-imap <Leader><Leader> <ESC>
+" imap <Leader><Leader> <ESC>
 imap jk <ESC>
 
+" Show absolute line numbers in visual mode
+autocmd InsertEnter * :set number
+" Show relative line numbers in normal mode
+autocmd InsertLeave * :set relativenumber
+
+" Function to handle normal mode line umber toggling"
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+" Toggle between absolute and relative line numbers in Normal mode using
+" Ctrl-n"
+nnoremap <C-n> :call NumberToggle()<cr>
+    
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
@@ -227,17 +245,21 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Close the current buffer
-map <leader>bd :Bclose<cr>
+" Scroll Other window
+nmap ,d <C-W>W<C-D><C-W>W
+nmap ,u <C-W>W<C-U><C-W>W
 
-" Close all the buffers
-map <leader>ba :1,300 bd!<cr>
+" Close the current buffer
+map <leader>x :Bclose<cr>
+
+" " Close all the buffers
+" map <leader>ba :1,300 bd!<cr>
 
 " Use the arrows to switch buffers
 map <right> :bn<cr>
 map <left> :bp<cr>
 map <up> :LustyJuggler<cr>
-map <down> :LustyJuggler<cr>
+map <down> <ESC>
 
 " Close all the buffers
 map <leader>r :LustyBufferExplorer<cr>
@@ -248,6 +270,17 @@ map <leader>cd :cd %:p:h<cr>
 " Easier non-interactive command insertion
 " "nnoremap <Space> :
 
+" Needed to enable Highlighting for the Easymotion plugin
+hi link EasyMotionTarget ErrorMsg
+
+" Powerling statusbar fancy symbols"
+let g:Powerline_symbols = 'unicode'
+
+" Ctrl-j/k deletes blank line below/above, and Alt-j/k inserts.
+" nnoremap <silent><A-j> m`:silent +g/\\m^\\s*$/d<CR>``:noh<CR>
+" nnoremap <silent><A-k> m`:silent -g/\\m^\\s*$/d<CR>``:noh<CR>
+nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " Tabularize
 if exists(":Tab")
@@ -320,6 +353,7 @@ augroup filetypedetect
     au BufRead,BufNewFile Termfile setfiletype ruby
     au BufRead,BufNewFile Guardfile setfiletype ruby
     au BufRead,BufNewFile Rakefile  setfiletype ruby
+    au BufRead,BufNewFile *.rabl  setfiletype ruby
 augroup END
 
 
@@ -348,13 +382,14 @@ let coffee_compile_vert = 1
 
 "autocmd BufWritePost,FileWritePost *.coffee silent !docco <afile> > /dev/null &
 
-map <Leader>d :!rocco % >  /dev/null &<CR>
-imap <Leader>d <ESC>:!rocco % > /dev/null &<CR>
+" map <Leader>d :!rocco % >  /dev/null &<CR>
+" imap <Leader>d <ESC>:!rocco % > /dev/null &<CR>
 " not working with filetype detection
 autocmd FileType coffee :call DoCoffeeScriptMappings()
 function! DoCoffeeScriptMappings()
     map <Leader>cw :CoffeeCompile<CR>
 endfunction
+
 
 " ================
 " Ruby stuff
@@ -433,7 +468,7 @@ function! DoRubyMappings()
 
     " convert word into ruby symbol
     imap <buffer> <C-k> <C-o>b:<Esc>Ea
-    nmap <buffer> <C-k> lbi:<Esc>E"
+    " nmap <buffer> <C-k> lbi:<Esc>E"
    
     inoremap <buffer> [[ <Esc>?def <CR>
     inoremap <buffer> ]] <Esc>/def <CR>
