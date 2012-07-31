@@ -181,8 +181,8 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Fast saving
-imap <leader>w <Esc>:w!<cr> 
-nmap <leader>w :w!<cr>
+imap <leader>w <Esc>:w!<cr>
+nmap <leader>w :w!<cr> 
 "
 " " Fast editing of the .vimrc
 map <leader>e :e! ~/.vimrc<cr>
@@ -267,11 +267,89 @@ map <leader>r :LustyBufferExplorer<cr>
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"When typing a string, your quotes auto complete. Move past the quote
+"while still in insert mode by hitting Ctrl-a. Example:
+"
+" type 'foo<c-a>
+"
+" the first quote will autoclose so you'll get 'foo' and hitting <c-a> will
+" put the cursor right after the quote
+imap <C-a> <esc>a
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  Bubbbling lines
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Easier non-interactive command insertion
 " "nnoremap <Space> :
+" https://github.com/carlhuda/janus/blob/master/vimrc
 
+" Unimpaired configuration
+" Bubble single lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+
+" Bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  Surroung configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ruby
+" Use v or # to get a variable interpolation (inside of a string)}
+" ysiw#   Wrap the token under the cursor in #{}
+" v...s#  Wrap the selection in #{}
+let g:surround_113 = "#{\r}"   " v
+let g:surround_35  = "#{\r}"   " #
+
+" Select text in an ERb file with visual mode and then press s- or s=
+" Or yss- to do entire line.
+let g:surround_45 = "<% \r %>"    " -
+let g:surround_61 = "<%= \r %>"   " =
+
+
+" create <%= foo %> erb tags using Ctrl-k in insert mode
+imap <silent> <C-K> <%=   %><Esc>3hi
+"
+" " create <%= foo %> erb tags using Ctrl-j in insert mode
+imap <silent> <C-J> <%  %><Esc>2hi
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  Easy Motion config
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Needed to enable Highlighting for the Easymotion plugin
 hi link EasyMotionTarget ErrorMsg
+
+
+" This remaps easymotion to show us only the left
+" hand home row keys as navigation options which 
+" may mean more typing to get to a particular spot
+" but it'll all be isolated to one area of the keyboard
+call EasyMotion#InitOptions({
+\   'leader_key'      : '<Leader><Leader>'
+\ , 'keys'            : 'fjdksewoavn'
+\ , 'do_shade'        : 1
+\ , 'do_mapping'      : 1
+\ , 'grouping'        : 1
+\
+\ , 'hl_group_target' : 'Question'
+\ , 'hl_group_shade'  : 'EasyMotionShade'
+\ })
+
+" Make EasyMotion more yellow, less red
+hi clear EasyMotionTarget
+hi! EasyMotionTarget guifg=yellow
+
+nmap ,<Tab> ,,w
+nmap ,<S-Tab> ,,b
+
+
+
+
+
+
+
 
 " Powerling statusbar fancy symbols"
 let g:Powerline_symbols = 'unicode'
@@ -460,14 +538,65 @@ function! ExtractPartial()
     exec "Rextract" partial_name
 endfunction
 
-autocmd FileType ruby :call DoRubyMappings()
+
+" ========================================
+" RSI Prevention - keyboard remaps
+" ========================================
+" Certain things we do every day as programmers stress
+" out our hands. For example, typing underscores and
+" dashes are very common, and in position that require
+" a lot of hand movement. Vim to the rescue
+"
+" Now using the middle finger of either hand you can type
+" underscores with apple-k or apple-d, and add Shift
+" to type dashes
+
+" Doesn't work"
+" imap <silent> <D-k> _
+" imap <silent> <D-d> _
+" imap <silent> <D-K> -
+" imap <silent> <D-D> -
+
+" ," Surround a word with "quotes"
+map ," ysiw"
+vmap ," c"<C-R>""<ESC>
+
+" ,' Surround a word with 'single quotes'
+map ,' ysiw'
+vmap ,' c'<C-R>"'<ESC>
+
+" ,) or ,( Surround a word with (parens)
+" The difference is in whether a space is put in
+map ,( ysiw(
+map ,) ysiw)
+vmap ,( c( <C-R>" )<ESC>
+vmap ,) c(<C-R>")<ESC>
+
+" ,[ Surround a word with [brackets]
+map ,] ysiw]
+map ,[ ysiw[
+vmap ,[ c[ <C-R>" ]<ESC>
+vmap ,] c[<C-R>"]<ESC>
+
+" ,{ Surround a word with {braces}
+map ,} ysiw}
+map ,{ ysiw{
+vmap ,} c{ <C-R>" }<ESC>
+vmap ,{ c{<C-R>"}<ESC>
+
 function! DoRubyMappings()
 
+    " Surround a word with #{ruby interpolation}
+    map ,# ysiw#
+    vmap ,# c#{<C-R>"}<ESC>
+
     " bind control-l to hashrocket
-    imap <buffer> ji <Space>=><Space>
+    " imap <buffer> ji <Space>=><Space>
+    imap <c-l> <space>=><space>
 
     " convert word into ruby symbol
-    imap <buffer> <C-k> <C-o>b:<Esc>Ea
+    imap <buffer> <C-y> <C-o>b:<Esc>Ea
+    " imap <C-s> <C-o>b:<Esc>Ea
     " nmap <buffer> <C-k> lbi:<Esc>E"
    
     inoremap <buffer> [[ <Esc>?def <CR>
