@@ -41,7 +41,7 @@ Bundle "git://github.com/vim-scripts/Gist.vim.git"
 " Do I really need this?   Don't know what it does
 " Bundle "git://github.com/vim-scripts/L9.git"
 " Bundle "git://github.com/clones/vim-fuzzyfinder.git"
-" Bundle "git://github.com/Townk/vim-autoclose.git"
+Bundle "git://github.com/Townk/vim-autoclose.git"
 Bundle "git://github.com/Bogdanp/rbrepl.vim.git"
 Bundle 'git://github.com/altercation/vim-colors-solarized.git'
 Bundle "git://github.com/rson/vim-conque.git"
