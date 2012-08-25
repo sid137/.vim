@@ -163,7 +163,7 @@ filetype plugin on    " Enable filetype-specific plugin
 set grepprg=ack
 
 " ,a to Ack (search in files)
-nnoremap <leader>a :Ack 
+nnoremap <leader>ac :Ack 
 
 " Ack settings: https://github.com/krisleech/vimfiles/wiki/Make-ack-ignore-files
 
@@ -192,9 +192,9 @@ map <leader>e :e! ~/.vimrc<cr>
 imap jk <ESC>
 
 " Show absolute line numbers in visual mode
-autocmd InsertEnter * :set number
+" autocmd InsertEnter * :set number
 " Show relative line numbers in normal mode
-autocmd InsertLeave * :set relativenumber
+" autocmd InsertLeave * :set relativenumber
 
 " Function to handle normal mode line umber toggling"
 function! NumberToggle()
@@ -449,9 +449,10 @@ let g:gist_clip_command = 'xclip -selection clipboard'  " Use option -c to have 
 "  Coffeescript configuration"
 "  https://github.com/kchmck/vim-coffee-script "
 
-au BufWritePost *.coffee silent CoffeeMake!
+" incompatible with rails asset pipeline
+" au BufWritePost *.coffee silent CoffeeMake!
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
-let coffee_compile_vert = 1
+" let coffee_compile_vert = 1
 
 " AutoClose
 " let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}'} 
