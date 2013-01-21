@@ -22,6 +22,7 @@ call vundle#rc()
 " List of vim plugins to install
 Bundle 'gmarik/vundle'
 Bundle "git://github.com/mileszs/ack.vim.git"
+Bundle "git://github.com/vim-scripts/c.vim.git"
 Bundle "git://github.com/sjbach/lusty.git"
 Bundle "git://github.com/tpope/vim-rvm.git"
 Bundle "git://github.com/tpope/vim-endwise.git"
@@ -37,6 +38,7 @@ Bundle "git://github.com/sophacles/vim-bundle-sparkup.git"
 Bundle "git://github.com/panozzaj/vim-autocorrect.git"
 Bundle "git://github.com/sjl/gundo.vim.git"
 Bundle "git://github.com/godlygeek/tabular.git"
+Bundle "git://github.com/vim-scripts/hexman.vim.git"
 Bundle "git://github.com/vim-scripts/Gist.vim.git"
 " Do I really need this?   Don't know what it does
 " Bundle "git://github.com/vim-scripts/L9.git"
@@ -57,12 +59,17 @@ Bundle "git://github.com/Lokaltog/vim-easymotion.git"
 Bundle "git://github.com/Lokaltog/vim-powerline.git"
 Bundle "https://github.com/ervandew/supertab"
 Bundle "jQuery"
+Bundle "git://github.com/jnwhiteh/vim-golang.git"
+" Bundle "git://github.com/nathanaelkane/vim-indent-guides.git"
 
 filetype plugin indent on     " and turn it back on!
 
 " runtime macros/matchit.vim    
 " End of Vundler config
 
+let g:indent_guides_start_level = 1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
 
       
 
@@ -135,7 +142,7 @@ set mouse=a
 ""set spell
 
 " togle paste mode
-set pastetoggle=<F2>
+set pastetoggle=<F3>
 
 
 colorscheme delek
@@ -195,6 +202,8 @@ imap jk <ESC>
 " autocmd InsertEnter * :set number
 " Show relative line numbers in normal mode
 " autocmd InsertLeave * :set relativenumber
+
+nmap <F4> :<C-U>silent make %:r<CR>:redraw!<CR>:!./%:r<CR>
 
 " Function to handle normal mode line umber toggling"
 function! NumberToggle()
@@ -293,27 +302,6 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  Surroung configuration
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ruby
-" Use v or # to get a variable interpolation (inside of a string)}
-" ysiw#   Wrap the token under the cursor in #{}
-" v...s#  Wrap the selection in #{}
-let g:surround_113 = "#{\r}"   " v
-let g:surround_35  = "#{\r}"   " #
-
-" Select text in an ERb file with visual mode and then press s- or s=
-" Or yss- to do entire line.
-let g:surround_45 = "<% \r %>"    " -
-let g:surround_61 = "<%= \r %>"   " =
-
-
-" create <%= foo %> erb tags using Ctrl-k in insert mode
-imap <silent> <C-K> <%=   %><Esc>3hi
-"
-" " create <%= foo %> erb tags using Ctrl-j in insert mode
-imap <silent> <C-J> <%  %><Esc>2hi
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  Easy Motion config
@@ -586,6 +574,27 @@ vmap ,} c{ <C-R>" }<ESC>
 vmap ,{ c{<C-R>"}<ESC>
 
 function! DoRubyMappings()
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  "  Surroung configuration
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " Ruby
+  " Use v or # to get a variable interpolation (inside of a string)}
+  " ysiw#   Wrap the token under the cursor in #{}
+  " v...s#  Wrap the selection in #{}
+  let g:surround_113 = "#{\r}"   " v
+  let g:surround_35  = "#{\r}"   " #
+
+  " Select text in an ERb file with visual mode and then press s- or s=
+  " Or yss- to do entire line.
+  let g:surround_45 = "<% \r %>"    " -
+  let g:surround_61 = "<%= \r %>"   " =
+
+
+  " create <%= foo %> erb tags using Ctrl-k in insert mode
+  imap <silent> <C-K> <%=   %><Esc>3hi
+  "
+  " " create <%= foo %> erb tags using Ctrl-j in insert mode
+  imap <silent> <C-J> <%  %><Esc>2hi
 
     " Surround a word with #{ruby interpolation}
     map ,# ysiw#
