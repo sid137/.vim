@@ -3,7 +3,7 @@ set nocompatible               " be iMproved
 
 
 " Install the Vundle plugin manager if it doesn't already exist
-if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
+if !isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
   !git clone git://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 endif
 
@@ -49,16 +49,16 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'git://git.wincent.com/command-t.git'
-" Plugin "gmarik/snipmate.vim"
-" Plugin "krisleech/snipmate-snippets"
+Plugin 'gmarik/snipmate.vim'
+Plugin 'krisleech/snipmate-snippets'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'Lokaltog/vim-easymotion'
-" Plugin "Lokaltog/vim-powerline"
 Plugin 'Lokaltog/powerline'
 Plugin 'ervandew/supertab'
 Plugin 'jQuery'
 Plugin 'jnwhiteh/vim-golang'
-" Plugin "nathanaelkane/vim-indent-guides"
+Plugin 'derekwyatt/vim-scala'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 call vundle#end()
 
@@ -149,12 +149,6 @@ set pastetoggle=<F3>
 
 colorscheme delek
 syntax on
-
-" Use pathogen to easily modify the runtime path to include all
-" plugins under the ~/.vim/bundle directory
-" call pathogen#helptags()
-" call pathogen#runtime_append_all_bundles()
-
 
 
 filetype off          " Force reloading on Debian
@@ -312,20 +306,6 @@ vmap <C-Down> ]egv
 hi link EasyMotionTarget ErrorMsg
 
 
-" This remaps easymotion to show us only the left
-" hand home row keys as navigation options which 
-" may mean more typing to get to a particular spot
-" but it'll all be isolated to one area of the keyboard
-" call EasyMotion#InitOptions({
-" \   'leader_key'      : '<Leader><Leader>'
-" \ , 'keys'            : 'fjdksewoavn'
-" \ , 'do_shade'        : 1
-" \ , 'do_mapping'      : 1
-" \ , 'grouping'        : 1
-" \
-" \ , 'hl_group_target' : 'Question'
-" \ , 'hl_group_shade'  : 'EasyMotionShade'
-" \ })
 
 " Make EasyMotion more yellow, less red
 hi clear EasyMotionTarget
@@ -440,16 +420,13 @@ let g:gist_clip_command = 'xclip -selection clipboard'  " Use option -c to have 
 "  https://github.com/kchmck/vim-coffee-script "
 
 " incompatible with rails asset pipeline
-" au BufWritePost *.coffee silent CoffeeMake!
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
-" let coffee_compile_vert = 1
 
 " AutoClose
 " let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}'} 
 " let g:AutoCloseProtectedRegions = ["Character"] 
 
 
-"autocmd BufWritePost,FileWritePost *.coffee silent !docco <afile> > /dev/null &
 
 " map <Leader>d :!rocco % >  /dev/null &<CR>
 " imap <Leader>d <ESC>:!rocco % > /dev/null &<CR>
