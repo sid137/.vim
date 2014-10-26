@@ -33,14 +33,13 @@ Bundle "git://github.com/tpope/vim-surround.git"
 Bundle "git://github.com/chrismetcalf/vim-yankring.git"
 Bundle "git://github.com/chrismetcalf/vim-taglist.git"
 Bundle "git://github.com/scrooloose/syntastic.git"
-Bundle "git://github.com/scrooloose/nerdtree.git"
+" Bundle "git://github.com/scrooloose/nerdtree.git"
 Bundle "git://github.com/sophacles/vim-bundle-sparkup.git"
 Bundle "git://github.com/panozzaj/vim-autocorrect.git"
 Bundle "git://github.com/sjl/gundo.vim.git"
 Bundle "git://github.com/godlygeek/tabular.git"
-Bundle "git://github.com/vim-scripts/hexman.vim.git"
+" Bundle "git://github.com/vim-scripts/hexman.vim.git"
 Bundle "git://github.com/vim-scripts/Gist.vim.git"
-" Do I really need this?   Don't know what it does
 " Bundle "git://github.com/vim-scripts/L9.git"
 " Bundle "git://github.com/clones/vim-fuzzyfinder.git"
 Bundle "git://github.com/Townk/vim-autoclose.git"
@@ -48,14 +47,15 @@ Bundle "git://github.com/Bogdanp/rbrepl.vim.git"
 Bundle 'git://github.com/altercation/vim-colors-solarized.git'
 " Bundle "git://github.com/rson/vim-conque.git"
 Bundle "git://github.com/xolox/vim-session.git" 
-Bundle "git://github.com/tsaleh/vim-tcomment.git"
+" Bundle "git://github.com/tsaleh/vim-tcomment.git"
+Bundle "git://github.com/tomtom/tcomment_vim.git"
 Bundle "git://github.com/kana/vim-textobj-user.git"
 Bundle "git://github.com/nelstrom/vim-textobj-rubyblock.git"
 Bundle 'git://git.wincent.com/command-t.git'
 " Bundle "git://github.com/gmarik/snipmate.vim.git"
 " Bundle "git://github.com/krisleech/snipmate-snippets.git"
 Bundle "git://github.com/kchmck/vim-coffee-script.git"
-" Bundle "git://github.com/Lokaltog/vim-easymotion.git"
+Bundle "git://github.com/Lokaltog/vim-easymotion.git"
 " Bundle "git://github.com/Lokaltog/vim-powerline.git"
 Bundle "git://github.com/Lokaltog/powerline.git"
 Bundle "https://github.com/ervandew/supertab"
@@ -472,61 +472,6 @@ augroup END
 " ================
 au BufRead,BufNewFile *.thor set filetype=ruby
 
-autocmd User Rails :call DoConfigureRails()
-function! DoConfigureRails()
-    map <Leader>m :Rmodel<CR>
-    map <Leader>c :Rcontroller<CR>
-    imap <Leader>c <ESC>:Rcontroller<CR>
-    map <Leader>rv :Rview<CR>
-    imap <Leader>rv <ESC>:Rview<CR>
-    
-    map <Leader>f :e spec/factories.rb<CR>
-    imap <Leader>f <ESC>:e spec/factories.rb<CR>
-    map <Leader>sc :e db/schema.rb<cr>
-    " "let Rails compile the coffescript, starting from 3.1
-    let coffee_compile_on_save = 0
-    map <Leader>sm :RSmodel
-    map <Leader>su :RSunittest
-    "map <Leader>sv :RSview
-    "map <Leader>u :Runittest
-    map <Leader>vc :RVcontroller
-    map <Leader>vf :RVfunctional
-    map <Leader>vu :RVunittest<CR>
-    map <Leader>vm :RVmodel
-    map <Leader>vv :RVview 
-
-    map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-    map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-    map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-    map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-    map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-    map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-    map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets<cr>
-    map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
-
-    " View routes or Gemfile in large split
-    map <leader>gr :e config/routes.rb<cr>
-    map <leader>gg :e Gemfile<cr>
-
-    " Skip to Models and Views
-    map <Leader>m :Rmodel 
-    imap <Leader>m <ESC>:Rmodel<CR>
-    map <Leader>v :Rview 
-    imap <Leader>v <ESC>:Rview<CR>
-
-   " Rails specific autocommands"
-   " Race condition? I have  6 zillion proceses running when I do this
-    ""autocmd BufWritePost,FileWritePost *.sass silent !compass compile -q <afile> > /dev/null &
-
-endfunction
-
-"shortcuts to quickly create new snippet
-vmap <Leader>rp :call ExtractPartial()
-
-function! ExtractPartial()
-    let partial_name = input('Enter the partial name: ')
-    exec "Rextract" partial_name
-endfunction
 
 
 " ========================================
@@ -591,92 +536,35 @@ function! DoRubyMappings()
   let g:surround_61 = "<%= \r %>"   " =
 
 
+
   " create <%= foo %> erb tags using Ctrl-k in insert mode
   imap <silent> <C-K> <%=   %><Esc>3hi
   "
   " " create <%= foo %> erb tags using Ctrl-j in insert mode
   imap <silent> <C-J> <%  %><Esc>2hi
 
-    " Surround a word with #{ruby interpolation}
-    map ,# ysiw#
-    vmap ,# c#{<C-R>"}<ESC>
+  " Surround a word with #{ruby interpolation}
+  map ,# ysiw#
+  vmap ,# c#{<C-R>"}<ESC>
 
-    " bind control-l to hashrocket
-    " imap <buffer> ji <Space>=><Space>
-    imap <c-l> <space>=><space>
+  " bind control-l to hashrocket
+  " imap <buffer> ji <Space>=><Space>
+  imap <c-l> <space>=><space>
 
-    " convert word into ruby symbol
-    imap <buffer> <C-y> <C-o>b:<Esc>Ea
-    " imap <C-s> <C-o>b:<Esc>Ea
-    " nmap <buffer> <C-k> lbi:<Esc>E"
-   
-    inoremap <buffer> [[ <Esc>?def <CR>
-    inoremap <buffer> ]] <Esc>/def <CR>
+  " convert word into ruby symbol
+  imap <buffer> <C-y> <C-o>b:<Esc>Ea
+  " imap <C-s> <C-o>b:<Esc>Ea
+  " nmap <buffer> <C-k> lbi:<Esc>E"
+  
+  inoremap <buffer> [[ <Esc>?def <CR>
+  inoremap <buffer> ]] <Esc>/def <CR>
 
-    nmap <buffer> [[ ?def <CR>
-    nmap <buffer> ]] /def <CR>
+  nmap <buffer> [[ ?def <CR>
+  nmap <buffer> ]] /def <CR>
 
-    inoremap <buffer> ; :
-    inoremap <buffer> ;; ;
-
-    " Ruby mapppings from Ben Orenstein
-     vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
-""    map <Leader>cc :!cucumber %<CR>
-""    map <Leader>co :TComment<CR>
-""    map <Leader>d odebugger<cr>puts 'debugger'<esc>:w<cr>
-    "map <Leader>gac :Gcommit -m -a <LEFT>
-    "map <Leader>gc :Gcommit -m <LEFT>
-    "map <Leader>gs :Gstatus<CR>
-""    map <Leader>fa :sp test/factories.rb<CR>
-""    map <Leader>fix :cnoremap % %<CR>
-""    map <Leader>i mmgg=G`m<CR>
-    "map <Leader>l :!ruby <C-r>% \| less<CR>
-    "map <Leader>s :!ruby -Itest -Ispec %<CR>
-    "map <Leader>s :!clear; rspec spec<CR>
-    "imap <Leader>s <ESC>:!clear; rspec spec<CR>
-    "map <Leader>rd :!bundle exec rspec % --format documentation<CR>
-    "imap <Leader>a ,w,s
-    "map <Leader>a ,w,s
-    "map <Leader>o ?def <CR>:nohl<CR>wzy$:!ruby -Itest <C-r>% -n <C-r>z<CR>
-    "map <Leader>p :set paste<CR>i
-    "map <Leader>rw :%s/\s\+$//
-
+  inoremap <buffer> ; :
+  inoremap <buffer> ;; ;
 endfunction
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" "Nerdtree
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" NERTree Plugin
-":"nmap ,n :NERDTreeClose<CR>:NERDTreeToggle<CR>
-""nmap ,m :NERDTreeClose<CR>:NERDTreeFind<CR>
-""nmap ,N :NERDTreeClose<CR>
-
-" Store the bookmarks file
-let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
-
-" Don't display these kinds of files
-let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
-            \ '\.o$', '\.so$', '\.egg$', '^\.git$' ]
-
-let NERDTreeShowBookmarks=1       " Show the bookmarks table on startup
-let NERDTreeShowFiles=1           " Show hidden files, too
-let NERDTreeShowHidden=1
-let NERDTreeQuitOnOpen=1          " Quit on opening files from the tree
-let NERDTreeHighlightCursorline=1 " Highlight the selected entry in the tree
-let NERDTreeMouseMode=2           " Use a single click to fold/unfold directories and a double click to open files
-let NERDChristmasTree = 1
-let NERDTreeWinPos = "left"
-let NERDTreeHijackNetrw = 1
-let NERDTreeWinSize = 50 
-" open file browser
-map <leader>p :NERDTreeToggle<cr>
-" load comments.vim for easy commenting
-" http://www.vim.org/scripts/script.php?script_id=1528
-
-
-
-
-
 
 let &printexpr="(v:cmdarg=='' ? ".
     \"system('lpr' . (&printdevice == '' ? '' : ' -P' . &printdevice)".
@@ -897,5 +785,3 @@ function! MakeSnippet()
 		let &filetype=g:snippet_file_type
 	endif
 endfunction
-
-
