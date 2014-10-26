@@ -1,67 +1,68 @@
 set nocompatible               " be iMproved
 
+
+
 " Install the Vundle plugin manager if it doesn't already exist
 if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
-  !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+  !git clone git://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 endif
 
 filetype off                   " must be off before Vundle has run
 
-set runtimepath+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 
-call vundle#rc()
+call vundle#begin()
 
 " Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
 " List of vim plugins to install
-Bundle 'gmarik/vundle'
-Bundle "git://github.com/mileszs/ack.vim.git"
-Bundle "git://github.com/vim-scripts/c.vim.git"
-Bundle "git://github.com/sjbach/lusty.git"
-Bundle "git://github.com/tpope/vim-rvm.git"
-Bundle "git://github.com/tpope/vim-endwise.git"
-Bundle "git://github.com/tpope/vim-fugitive"
-Bundle "git://github.com/tpope/vim-haml.git"
-Bundle "git://github.com/tpope/vim-rails.git"
-Bundle "git://github.com/tpope/vim-surround.git"
-Bundle "git://github.com/chrismetcalf/vim-yankring.git"
-Bundle "git://github.com/chrismetcalf/vim-taglist.git"
-Bundle "git://github.com/scrooloose/syntastic.git"
-" Bundle "git://github.com/scrooloose/nerdtree.git"
-Bundle "git://github.com/sophacles/vim-bundle-sparkup.git"
-Bundle "git://github.com/panozzaj/vim-autocorrect.git"
-Bundle "git://github.com/sjl/gundo.vim.git"
-Bundle "git://github.com/godlygeek/tabular.git"
-" Bundle "git://github.com/vim-scripts/hexman.vim.git"
-Bundle "git://github.com/vim-scripts/Gist.vim.git"
-" Bundle "git://github.com/vim-scripts/L9.git"
-" Bundle "git://github.com/clones/vim-fuzzyfinder.git"
-Bundle "git://github.com/Townk/vim-autoclose.git"
-Bundle "git://github.com/Bogdanp/rbrepl.vim.git"
-Bundle 'git://github.com/altercation/vim-colors-solarized.git'
-" Bundle "git://github.com/rson/vim-conque.git"
-Bundle "git://github.com/xolox/vim-session.git" 
-" Bundle "git://github.com/tsaleh/vim-tcomment.git"
-Bundle "git://github.com/tomtom/tcomment_vim.git"
-Bundle "git://github.com/kana/vim-textobj-user.git"
-Bundle "git://github.com/nelstrom/vim-textobj-rubyblock.git"
-Bundle 'git://git.wincent.com/command-t.git'
-" Bundle "git://github.com/gmarik/snipmate.vim.git"
-" Bundle "git://github.com/krisleech/snipmate-snippets.git"
-Bundle "git://github.com/kchmck/vim-coffee-script.git"
-Bundle "git://github.com/Lokaltog/vim-easymotion.git"
-" Bundle "git://github.com/Lokaltog/vim-powerline.git"
-Bundle "git://github.com/Lokaltog/powerline.git"
-Bundle "https://github.com/ervandew/supertab"
-Bundle "jQuery"
-Bundle "git://github.com/jnwhiteh/vim-golang.git"
-" Bundle "git://github.com/nathanaelkane/vim-indent-guides.git"
+Plugin 'gmarik/Vundle.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'vim-scripts/c.vim'
+Plugin 'sjbach/lusty'
+Plugin 'tpope/vim-rvm'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'chrismetcalf/vim-yankring'
+Plugin 'chrismetcalf/vim-taglist'
+Plugin 'scrooloose/syntastic'
+" Plugin "scrooloose/nerdtree"
+Plugin 'sophacles/vim-bundle-sparkup'
+Plugin 'panozzaj/vim-autocorrect'
+Plugin 'sjl/gundo.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'vim-scripts/Gist.vim'
+Plugin 'Townk/vim-autoclose'
+Plugin 'Bogdanp/rbrepl.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'xolox/vim-session' 
+Plugin 'tomtom/tcomment_vim'
+Plugin 'kana/vim-textobj-user'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'git://git.wincent.com/command-t.git'
+" Plugin "gmarik/snipmate.vim"
+" Plugin "krisleech/snipmate-snippets"
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'Lokaltog/vim-easymotion'
+" Plugin "Lokaltog/vim-powerline"
+Plugin 'Lokaltog/powerline'
+Plugin 'ervandew/supertab'
+Plugin 'jQuery'
+Plugin 'jnwhiteh/vim-golang'
+" Plugin "nathanaelkane/vim-indent-guides"
+
+call vundle#end()
+
+
 
 filetype plugin indent on     " and turn it back on!
 
@@ -315,16 +316,16 @@ hi link EasyMotionTarget ErrorMsg
 " hand home row keys as navigation options which 
 " may mean more typing to get to a particular spot
 " but it'll all be isolated to one area of the keyboard
-call EasyMotion#InitOptions({
-\   'leader_key'      : '<Leader><Leader>'
-\ , 'keys'            : 'fjdksewoavn'
-\ , 'do_shade'        : 1
-\ , 'do_mapping'      : 1
-\ , 'grouping'        : 1
-\
-\ , 'hl_group_target' : 'Question'
-\ , 'hl_group_shade'  : 'EasyMotionShade'
-\ })
+" call EasyMotion#InitOptions({
+" \   'leader_key'      : '<Leader><Leader>'
+" \ , 'keys'            : 'fjdksewoavn'
+" \ , 'do_shade'        : 1
+" \ , 'do_mapping'      : 1
+" \ , 'grouping'        : 1
+" \
+" \ , 'hl_group_target' : 'Question'
+" \ , 'hl_group_shade'  : 'EasyMotionShade'
+" \ })
 
 " Make EasyMotion more yellow, less red
 hi clear EasyMotionTarget
