@@ -21,6 +21,8 @@ call vundle#rc()
 
 " List of vim plugins to install
 Bundle 'gmarik/vundle'
+Bundle 'Rykka/riv.vim'
+Bundle 'greyblake/vim-preview'
 Bundle "git://github.com/mileszs/ack.vim.git"
 Bundle "git://github.com/vim-scripts/c.vim.git"
 Bundle "git://github.com/sjbach/lusty.git"
@@ -40,6 +42,7 @@ Bundle "git://github.com/sjl/gundo.vim.git"
 Bundle "git://github.com/godlygeek/tabular.git"
 Bundle "git://github.com/vim-scripts/hexman.vim.git"
 Bundle "git://github.com/vim-scripts/Gist.vim.git"
+" Bundle 'FredKSchott/CoVim'
 " Do I really need this?   Don't know what it does
 " Bundle "git://github.com/vim-scripts/L9.git"
 " Bundle "git://github.com/clones/vim-fuzzyfinder.git"
@@ -47,7 +50,7 @@ Bundle "git://github.com/Townk/vim-autoclose.git"
 Bundle "git://github.com/Bogdanp/rbrepl.vim.git"
 Bundle 'git://github.com/altercation/vim-colors-solarized.git'
 Bundle "git://github.com/rson/vim-conque.git"
-Bundle "git://github.com/xolox/vim-session.git" 
+Bundle "git://github.com/xolox/vim-session.git"
 Bundle "git://github.com/tsaleh/vim-tcomment.git"
 Bundle "git://github.com/kana/vim-textobj-user.git"
 Bundle "git://github.com/nelstrom/vim-textobj-rubyblock.git"
@@ -56,26 +59,42 @@ Bundle "git://github.com/gmarik/snipmate.vim.git"
 Bundle "git://github.com/krisleech/snipmate-snippets.git"
 Bundle "git://github.com/kchmck/vim-coffee-script.git"
 Bundle "git://github.com/Lokaltog/vim-easymotion.git"
-Bundle "git://github.com/Lokaltog/vim-powerline.git"
+" Bundle "git://github.com/Lokaltog/vim-powerline.git"
 Bundle "https://github.com/ervandew/supertab"
 Bundle "jQuery"
 Bundle "git://github.com/jnwhiteh/vim-golang.git"
+Bundle "git://github.com/jcfaria/Vim-R-plugin.git"
+Bundle "git://github.com/digitaltoad/vim-jade.git"
+Bundle "git://github.com/guns/vim-clojure-static.git"
+Bundle "git://github.com/tpope/vim-fireplace.git"
+Bundle "git@github.com:wavded/vim-stylus.git"
+Bundle "git@github.com:slim-template/vim-slim.git"
+Bundle "git@github.com:guns/vim-sexp.git"
+Bundle "git://github.com/tpope/vim-sexp-mappings-for-regular-people.git"
+Bundle 'derekwyatt/vim-scala'
+Bundle 'wakatime/vim-wakatime'
+Bundle 'mxw/vim-jsx'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'pangloss/vim-javascript'
+
 " Bundle "git://github.com/nathanaelkane/vim-indent-guides.git"
 
 filetype plugin indent on     " and turn it back on!
 
-" runtime macros/matchit.vim    
+" runtime macros/matchit.vim
 " End of Vundler config
 
 " let g:indent_guides_start_level = 1
 " let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 
-      
+let g:jsx_ext_required = 0
+
+let loaded_html_syntax_checker = 1
 
 
-" Many settings taken from 
-" http://nvie.com/posts/how-i-boosted-my-vim/ 
+" Many settings taken from
+" http://nvie.com/posts/how-i-boosted-my-vim/
 " https://github.com/krisleech/vimfiles
 "
 " Most general settings first
@@ -92,9 +111,9 @@ set undolevels=10000
 "  ---------------------------------------------------------------------------
 set textwidth=79            " Set text to wrap at 80 columns
 set expandtab               " Convert tabs to spaces
-set tabstop=2               " Tabs = 2 spaces 
+set tabstop=2               " Tabs = 2 spaces
 set shiftwidth=2            " Indent/outdent 2 spaces
-set softtabstop=2           " Tab key indents 
+set softtabstop=2           " Tab key indents
 set shiftround              " Indent/outdent to nearest tabstop
 set smarttab                " Uses shiftwidth @ start of lines
 
@@ -133,7 +152,7 @@ set ruler                   " Show the cursor position all the time
 set showcmd                 " Display incomplete commands
 set showmode                " Display current mode
 set ls=2                    " Always show status bar
- 
+
 " Enable mouse in all modes
 set mouse=a
 
@@ -170,7 +189,7 @@ filetype plugin on    " Enable filetype-specific plugin
 set grepprg=ack
 
 " ,a to Ack (search in files)
-nnoremap <leader>ac :Ack 
+nnoremap <leader>ac :Ack
 
 " Ack settings: https://github.com/krisleech/vimfiles/wiki/Make-ack-ignore-files
 
@@ -189,7 +208,7 @@ let g:mapleader = ","
 
 " Fast saving
 imap <leader>w <Esc>:w!<cr>
-nmap <leader>w :w!<cr> 
+nmap <leader>w :w!<cr>
 "
 " " Fast editing of the .vimrc
 map <leader>e :e! ~/.vimrc<cr>
@@ -217,7 +236,7 @@ endfunc
 " Toggle between absolute and relative line numbers in Normal mode using
 " Ctrl-n"
 nnoremap <C-n> :call NumberToggle()<cr>
-    
+
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
@@ -244,7 +263,7 @@ nmap <silent> ,/ :let @/=""<CR>
 " post sudo with !!
 cmap w!! w !sudo tee % >/dev/null
 
-inoremap <silent> <C-a> <ESC>u:set paste<CR> :set nopaste<CR>gi 	
+inoremap <silent> <C-a> <ESC>u:set paste<CR> :set nopaste<CR>gi
 
 map <M-F10> :!ruby -r xmp -n -e 'xmp($_, "\%l\t\t\# \%r\n")'<CR>
 
@@ -311,7 +330,7 @@ hi link EasyMotionTarget ErrorMsg
 
 
 " This remaps easymotion to show us only the left
-" hand home row keys as navigation options which 
+" hand home row keys as navigation options which
 " may mean more typing to get to a particular spot
 " but it'll all be isolated to one area of the keyboard
 call EasyMotion#InitOptions({
@@ -377,6 +396,7 @@ set statusline+=%*
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+let g:syntastic_javascript_checkers = ['eslint']
 
 
 
@@ -390,7 +410,7 @@ let g:haddock_browser = "firefox"
 
 
 " " When vimrc is edited, reload it
-autocmd! BufWritePost .vimrc source $MYVIMRC 
+autocmd! BufWritePost .vimrc source $MYVIMRC
 
 
 " Enable extended % matching
@@ -410,12 +430,16 @@ map <F5> :call RunShebang()<CR>
 " Python Auto Filetype"
 autocmd FileType python set autoindent smartindent et sts=4
 \ cinwords=class,def,elif,else,except,finally,for,if,try,while
-autocmd FileType python inoremap # X#
+" autocmd FileType python inoremap # X#
 
+
+au BufRead,BufNewFile *.slim set filetype=slim
 augroup filetypedetect
     au BufRead,BufNewFile *.ru setfiletype ruby
     au BufRead,BufNewFile Gemfile setfiletype ruby
+    au BufRead,BufNewFile Bowerfile setfiletype ruby
     au BufRead,BufNewFile Vagrantfile setfiletype ruby
+    au BufRead,BufNewFile Berksfile setfiletype ruby
     au BufRead,BufNewFile Termfile setfiletype ruby
     au BufRead,BufNewFile Guardfile setfiletype ruby
     au BufRead,BufNewFile Rakefile  setfiletype ruby
@@ -427,7 +451,7 @@ augroup END
 " One Liner Configurations
 " ===============================
 
-" Gist 
+" Gist
 " http://www.vim.org/scripts/script.php?script_id=2423
 let g:gist_detect_filetype = 1  " Let gist detect filetype from filename
 let g:gist_open_browser_after_post = 1   " Open browser after post
@@ -438,13 +462,13 @@ let g:gist_clip_command = 'xclip -selection clipboard'  " Use option -c to have 
 "  https://github.com/kchmck/vim-coffee-script "
 
 " incompatible with rails asset pipeline
-" au BufWritePost *.coffee silent CoffeeMake!
+au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
-" let coffee_compile_vert = 1
+let coffee_compile_vert = 1
 
 " AutoClose
-" let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}'} 
-" let g:AutoCloseProtectedRegions = ["Character"] 
+" let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}'}
+" let g:AutoCloseProtectedRegions = ["Character"]
 
 
 "autocmd BufWritePost,FileWritePost *.coffee silent !docco <afile> > /dev/null &
@@ -457,6 +481,8 @@ function! DoCoffeeScriptMappings()
     map <Leader>cw :CoffeeCompile<CR>
 endfunction
 
+
+autocmd Filetype go set makeprg=go\ run
 
 " ================
 " Ruby stuff
@@ -478,12 +504,12 @@ function! DoConfigureRails()
     imap <Leader>c <ESC>:Rcontroller<CR>
     map <Leader>rv :Rview<CR>
     imap <Leader>rv <ESC>:Rview<CR>
-    
+
     map <Leader>f :e spec/factories.rb<CR>
     imap <Leader>f <ESC>:e spec/factories.rb<CR>
     map <Leader>sc :e db/schema.rb<cr>
     " "let Rails compile the coffescript, starting from 3.1
-    let coffee_compile_on_save = 0
+    let coffee_compile_on_save = 1
     map <Leader>sm :RSmodel
     map <Leader>su :RSunittest
     "map <Leader>sv :RSview
@@ -492,7 +518,7 @@ function! DoConfigureRails()
     map <Leader>vf :RVfunctional
     map <Leader>vu :RVunittest<CR>
     map <Leader>vm :RVmodel
-    map <Leader>vv :RVview 
+    map <Leader>vv :RVview
 
     map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
     map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
@@ -508,9 +534,9 @@ function! DoConfigureRails()
     map <leader>gg :e Gemfile<cr>
 
     " Skip to Models and Views
-    map <Leader>m :Rmodel 
+    map <Leader>m :Rmodel
     imap <Leader>m <ESC>:Rmodel<CR>
-    map <Leader>v :Rview 
+    map <Leader>v :Rview
     imap <Leader>v <ESC>:Rview<CR>
 
    " Rails specific autocommands"
@@ -573,7 +599,10 @@ map ,{ ysiw{
 vmap ,} c{ <C-R>" }<ESC>
 vmap ,{ c{<C-R>"}<ESC>
 
+autocmd BufWritePre *.rb,*.jcoffee,*.js,*.sql :%s/\s\+$//e
+autocmd FileType ruby :call DoRubyMappings()
 function! DoRubyMappings()
+  autocmd BufWritePre * :%s/\s\+$//e
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   "  Surroung configuration
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -608,7 +637,7 @@ function! DoRubyMappings()
     imap <buffer> <C-y> <C-o>b:<Esc>Ea
     " imap <C-s> <C-o>b:<Esc>Ea
     " nmap <buffer> <C-k> lbi:<Esc>E"
-   
+
     inoremap <buffer> [[ <Esc>?def <CR>
     inoremap <buffer> ]] <Esc>/def <CR>
 
@@ -620,9 +649,6 @@ function! DoRubyMappings()
 
     " Ruby mapppings from Ben Orenstein
      vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
-""    map <Leader>cc :!cucumber %<CR>
-""    map <Leader>co :TComment<CR>
-""    map <Leader>d odebugger<cr>puts 'debugger'<esc>:w<cr>
     "map <Leader>gac :Gcommit -m -a <LEFT>
     "map <Leader>gc :Gcommit -m <LEFT>
     "map <Leader>gs :Gstatus<CR>
@@ -666,7 +692,7 @@ let NERDTreeMouseMode=2           " Use a single click to fold/unfold directorie
 let NERDChristmasTree = 1
 let NERDTreeWinPos = "left"
 let NERDTreeHijackNetrw = 1
-let NERDTreeWinSize = 50 
+let NERDTreeWinSize = 50
 " open file browser
 map <leader>p :NERDTreeToggle<cr>
 " load comments.vim for easy commenting
@@ -683,6 +709,8 @@ let &printexpr="(v:cmdarg=='' ? ".
     \" : system('mv '.v:fname_in.' '.v:cmdarg) + v:shell_error)"
 
 
+
+" Javascript helpers
 
 
 " FoldSearch-based folding.
@@ -761,7 +789,7 @@ function! Foldsearch(search)
       else
     "Default value, suitable for Ruby scripts
     "\(^\s*\(\(def\|class\|module\)\s\)\)\|^\s*[#%"0-9]\{0,4\}\s*{\({{\|!!\)
-    let searchre = '\v(^\s*(def|class|module|attr_reader|attr_accessor|alias_method)\s' . 
+    let searchre = '\v(^\s*(def|class|module|attr_reader|attr_accessor|alias_method)\s' .
                  \ '|^\s*\w+attr_(reader|accessor)\s|^\s*[#%"0-9]{0,4}\s*\{(\{\{|!!))' .
                  \ '|^\s*[A-Z]\w+\s*\='
     let b:foldsearchexpr = searchre
@@ -799,7 +827,7 @@ endfunction
 command! -nargs=? -complete=command Fs call Foldsearch(<q-args>)
 command! -nargs=? -complete=command Fold call Foldsearch(<q-args>)
 "command! R Fs \(^\s*\(\(def\|class\|module\)\s\)\)\|^\s*[#%"0-9]\{0,4\}\s*{\({{\|!!\)
-command! D Fs 
+command! D Fs
 
 
 
@@ -824,7 +852,7 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=usetab
   set stal=2
@@ -836,7 +864,9 @@ endtry
 " => Command-T
 """"""""""""""""""""""""""""""
 let g:CommandTMaxHeight = 15
-set wildignore+=*.o,*.obj,.git,*.pyc
+set wildignore+=*.o,*.obj,.git,*.pyc,*.class,*.cache,node_modules/**,tmp/**,coverage/**
+set wildignore+=public/uploads/**,public/assets/**,vendor/**,app/assets/components/**,target/**
+set wildignore+=project/target/**
 noremap <leader>t :CommandT<cr>
 noremap <leader>y :CommandTFlush<cr>
 
@@ -863,7 +893,7 @@ function! EnsureDirExists ()
 endfunction
 
 function! AskQuit (msg, proposed_action)
-	if confirm(a:msg, a:proposed_action . "\n&Quit?") == 2 
+	if confirm(a:msg, a:proposed_action . "\n&Quit?") == 2
         exit
     endif
 endfunction

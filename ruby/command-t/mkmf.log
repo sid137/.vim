@@ -1,14 +1,17 @@
 have_header: checking for ruby.h... -------------------- yes
 
-"gcc -o conftest -I/home/sid137/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-linux -I/home/sid137/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/backward -I/home/sid137/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1 -I.     -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wno-long-long  -fPIC conftest.c  -L. -L/home/sid137/.rvm/rubies/ruby-1.9.2-p0/lib -Wl,-R/home/sid137/.rvm/rubies/ruby-1.9.2-p0/lib -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/home/sid137/.rvm/rubies/ruby-1.9.2-p0/lib -L/home/sid137/.rvm/rubies/ruby-1.9.2-p0/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"/usr/bin/clang -o conftest -I/Users/sid137/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/x86_64-darwin13.0 -I/Users/sid137/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/backward -I/Users/sid137/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/readline/include -I/usr/local/opt/libksba/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wextra-tokens  -fno-common -pipe conftest.c  -L. -L/Users/sid137/.rvm/rubies/ruby-2.1.0/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/openssl/lib -L. -fstack-protector      -L/usr/local/lib     -lruby.2.1.0  -lpthread -ldl -lobjc "
 checked program was:
 /* begin */
 1: #include "ruby.h"
 2: 
-3: int main() {return 0;}
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
 /* end */
 
-"gcc -E -I/home/sid137/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-linux -I/home/sid137/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/backward -I/home/sid137/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1 -I.     -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wno-long-long  -fPIC  conftest.c -o conftest.i"
+"/usr/bin/clang -E -I/Users/sid137/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/x86_64-darwin13.0 -I/Users/sid137/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/backward -I/Users/sid137/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/readline/include -I/usr/local/opt/libksba/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wextra-tokens  -fno-common -pipe  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
