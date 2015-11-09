@@ -71,4 +71,21 @@ snippet get
 	getElementsBy${1:TagName}('${2}')${3}
 # Get Element
 snippet gett
+# Get Element
 	getElementBy${1:Id}('${2}')${3}
+# ES7 React Component
+snippet rxc
+	import React from 'react';
+
+	class ${1:component} extends React.Component {
+		static propTypes = {};
+
+		static defaultProps = {};
+
+		render() {
+			return (
+			);
+		}
+	}
+
+	export default $1;

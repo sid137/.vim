@@ -76,6 +76,7 @@ Bundle 'wakatime/vim-wakatime'
 Bundle 'mxw/vim-jsx'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'pangloss/vim-javascript'
+Bundle 'klen/python-mode'
 
 " Bundle "git://github.com/nathanaelkane/vim-indent-guides.git"
 
@@ -92,6 +93,10 @@ let g:jsx_ext_required = 0
 
 let loaded_html_syntax_checker = 1
 
+let g:pymode_trim_whitepsaces = 1
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope = 0
+set completeopt=menu
 
 " Many settings taken from
 " http://nvie.com/posts/how-i-boosted-my-vim/
@@ -428,12 +433,15 @@ endfunction
 map <F5> :call RunShebang()<CR>
 
 " Python Auto Filetype"
-autocmd FileType python set autoindent smartindent et sts=4
+autocmd FileType python set autoindent smartindent et sts=4 shiftwidth=4 showmatch 
 \ cinwords=class,def,elif,else,except,finally,for,if,try,while
 " autocmd FileType python inoremap # X#
+let python_highlight_all=1
 
+hi Folded ctermbg=black
 
 au BufRead,BufNewFile *.slim set filetype=slim
+
 augroup filetypedetect
     au BufRead,BufNewFile *.ru setfiletype ruby
     au BufRead,BufNewFile Gemfile setfiletype ruby
@@ -865,6 +873,7 @@ endtry
 """"""""""""""""""""""""""""""
 let g:CommandTMaxHeight = 15
 set wildignore+=*.o,*.obj,.git,*.pyc,*.class,*.cache,node_modules/**,tmp/**,coverage/**
+set wildignore+=env/**
 set wildignore+=public/uploads/**,public/assets/**,vendor/**,app/assets/components/**,target/**
 set wildignore+=project/target/**
 noremap <leader>t :CommandT<cr>
